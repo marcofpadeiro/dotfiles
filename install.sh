@@ -6,9 +6,9 @@ function configureZSH {
 
     # Deleting old config files
     echo "  Backing up old config files..."
-    [ -f $HOME/.zshrc ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.zshrc $HOME/old-dotfiles/zsh/zshrc 
-    [ -f $HOME/.oh-my-zsh ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.oh-my-zsh $HOME/old-dotfiles/zsh/oh-my-zsh
-    [ -f $HOME/.p10k.zsh ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.p10k.zsh $HOME/old-dotfiles/zsh/p10k.zsh
+    [ -f $HOME/.zshrc ] && mkdir -p $HOME/.old-dotfiles/zsh && mv $HOME/.zshrc $HOME/.old-dotfiles/zsh/zshrc 
+    [ -f $HOME/.oh-my-zsh ] && mkdir -p $HOME/.old-dotfiles/zsh && mv $HOME/.oh-my-zsh $HOME/.old-dotfiles/zsh/oh-my-zsh
+    [ -f $HOME/.p10k.zsh ] && mkdir -p $HOME/.old-dotfiles/zsh && mv $HOME/.p10k.zsh $HOME/.old-dotfiles/zsh/p10k.zsh
 
     # Installing oh-my-zsh
     echo "  Installing oh-my-zsh..."
@@ -42,7 +42,7 @@ function configureNeovim {
     cd $HOME/dotfiles
 
     # Deleting old config files
-    [ -d $HOME/.config/nvim ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/nvim $HOME/old-dotfiles
+    [ -d $HOME/.config/nvim ] && echo "  Backing up old config files..." && mkdir -p $HOME/.old-dotfiles && mv $HOME/.config/nvim $HOME/.old-dotfiles
 
     echo "  Installing Packer..."
     rm -rf $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -59,7 +59,7 @@ function configureAlacritty {
     echo "Configuring alacritty..."
 
     # Deleting old config files
-    [ -f $HOME/.alacritty.yml ] && echo "  Backing up old config files... " && mkdir -p $HOME/old-dotfiles && mkdir -p $HOME/old-dotfiles/alacritty && mv $HOME/.alacritty.yml $HOME/old-dotfiles/alacritty/
+    [ -f $HOME/.alacritty.yml ] && echo "  Backing up old config files... " && mkdir -p $HOME/.old-dotfiles && mkdir -p $HOME/.old-dotfiles/alacritty && mv $HOME/.alacritty.yml $HOME/.old-dotfiles/alacritty/
 
     echo "  Creating symlinks..."
     ln -s $HOME/dotfiles/alacritty/config $HOME/.alacritty.yml
@@ -70,7 +70,7 @@ function configurei3 {
 
     # Deleting old config files
     echo "  Creating symlinks..."
-    [ -d $HOME/.config/i3 ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/i3 $HOME/old-dotfiles
+    [ -d $HOME/.config/i3 ] && echo "  Backing up old config files..." && mkdir -p $HOME/.old-dotfiles && mv $HOME/.config/i3 $HOME/.old-dotfiles
 
     ln -s $HOME/dotfiles/i3 $HOME/.config/i3
 }
@@ -79,7 +79,7 @@ function configurei3bar {
     echo "Configuring i3status..."
 
     # Deleting old config files
-    [ -d $HOME/.config/i3status ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/i3status $HOME/old-dotfiles
+    [ -d $HOME/.config/i3status ] && echo "  Backing up old config files..." && mkdir -p $HOME/.old-dotfiles && mv $HOME/.config/i3status $HOME/.old-dotfiles
 
     # Creating symlinks
     echo "  Creating symlinks..."
@@ -99,7 +99,7 @@ if [ "$packages" == "Y" ] || [ "$packages" == "y" ] || [ "$packages" == "" ]; th
 fi
 
 if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ]; then
-    rm -rf $HOME/old-dotfiles
+    rm -rf $HOME/.old-dotfiles
     rm -rf $HOME/dotfiles
     echo -e "\nDownloading dotfiles from repository..."
     git clone git@github.com:MarcoPadeiroIPL/dotfiles.git $HOME/dotfiles &> /dev/null
@@ -121,7 +121,7 @@ if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ];
     echo -e "\nDone!"
     echo "You may need to restart your X session for some changes to take effect."
     echo "All the config files are saved in \"$HOME/dotfiles\""
-    echo "Your old config files are backed up in \"$HOME/old-dotfiles\""
+    echo "Your old config files are backed up in \"$HOME/.old-dotfiles\""
 
 fi
 
