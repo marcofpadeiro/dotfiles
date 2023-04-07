@@ -17,8 +17,8 @@ return require('packer').startup(function(use)
     use "p00f/nvim-ts-rainbow"
 
     -- Nvim Tree
-    use 'kyazdani42/nvim-web-devicons'
-    use 'kyazdani42/nvim-tree.lua'
+    use 'nvim-tree/nvim-web-devicons'
+    use 'nvim-tree/nvim-tree.lua'
 
     -- Quality of life features AKA I need to learn all of this
     use 'lukas-reineke/indent-blankline.nvim'
