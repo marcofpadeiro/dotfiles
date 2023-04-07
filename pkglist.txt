@@ -4,4 +4,3 @@ i3status
 dmenu
 neovim
 zsh
-autojump

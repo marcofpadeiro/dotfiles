@@ -64,6 +64,11 @@ configureZSH() {
     rm -rf ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k &> /dev/null
 
+    # Installing autojump
+    echo "Installing autojump..."
+    git clone git://github.com/wting/autojump.git
+    cd autojump && ./install.py &> /dev/null
+
     echo "Moving config files to the right place..."
     mv zsh/zshrc $HOME/.zshrc
     mv zsh/p10k.zsh $HOME/.p10k.zsh

@@ -11,4 +11,10 @@ Currently it's optimized to run on Arch linux but any distro should work with so
 >- Shell: zsh
 >- Colorscheme: One Dark Pro deep
 
+## Installation 
+Download the bash file and execute it...
+```
+curl -sS https://raw.githubusercontent.com/MarcoPadeiroIPL/dotfiles/main/install.sh -o install.sh
+```
+
 

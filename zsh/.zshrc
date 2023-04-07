@@ -20,7 +20,9 @@ plugins=(
     git
     z
     zsh-completions
+    #command-not-found
     autojump
+#    zsh-vi-mode
     zsh-syntax-highlighting
 )
 
