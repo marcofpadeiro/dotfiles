@@ -1,0 +1,7 @@
+alacritty
+i3
+i3status
+dmenu
+neovim
+zsh
+autojump
