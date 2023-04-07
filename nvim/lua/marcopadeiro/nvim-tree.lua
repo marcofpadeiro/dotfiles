@@ -13,16 +13,15 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+
+
+
 nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
-    ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-    },
     hijack_cursor = false,
     update_cwd = true,
+    auto_reload_on_write = true,
     hijack_directories = {
         enable = true,
     },
@@ -53,8 +52,8 @@ nvim_tree.setup {
             custom_only = false,
             list = {
                 { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-                { key = "h", cb = tree_cb "close_node" },
-                { key = "v", cb = tree_cb "vsplit" },
+                { key = "h",                  cb = tree_cb "close_node" },
+                { key = "v",                  cb = tree_cb "vsplit" },
             },
         },
         number = false,
@@ -93,3 +92,19 @@ nvim_tree.setup {
         }
     }
 }
+local function open_nvim_tree(data)
+    -- buffer is a directory
+    local directory = vim.fn.isdirectory(data.file) == 1
+
+    if not directory then
+        return
+    end
+
+    -- change to the directory
+    vim.cmd.cd(data.file)
+
+    -- open the tree
+    require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
