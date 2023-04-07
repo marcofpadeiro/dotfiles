@@ -39,7 +39,6 @@ function configureZSH {
 
 function configureNeovim {
     echo "Configuring neovim..."
-    cd $HOME/dotfiles
 
     # Deleting old config files
     [ -d $HOME/.config/nvim ] && echo "  Backing up old config files..." && mkdir -p $HOME/.old-dotfiles && mv $HOME/.config/nvim $HOME/.old-dotfiles
@@ -88,14 +87,23 @@ function configurei3bar {
 
 
 echo "Configuration of dotfiles..."
-read -p "Do you want this script to automaticaly install the required packages? [Y/n]: " packages
+read -p "Do you want this script to automaticaly install the required packages? (pacman only) [Y/n]: " packages
 read -p "Do you want this script to automaticaly configure the programs? [Y/n]: " configure
 
 if [ "$packages" == "Y" ] || [ "$packages" == "y" ] || [ "$packages" == "" ]; then
     echo "  Installing required packages..."
     curl -sS https://raw.githubusercontent.com/MarcoPadeiroIPL/dotfiles/master/pkglist.txt -o pkglist.txt
-    sudo pacman -S --needed - < pkglist.txt
-    rm -rf pkglist.txt
+
+    while read -r pkg; do
+        # Check if the package is already installed
+        if pacman -Qs $pkg &> /dev/null; then
+            echo "Package $pkg is already installed"
+        else
+            echo "Installing $pkg ..."
+            yes | sudo pacman -S $pkg &> /dev/null
+        fi
+
+    done < pkglist.txt
 fi
 
 if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ]; then
@@ -123,5 +131,6 @@ if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ];
     echo "All the config files are saved in \"$HOME/dotfiles\""
     echo "Your old config files are backed up in \"$HOME/.old-dotfiles\""
 
+    rm $PWD/install.sh
 fi
 
