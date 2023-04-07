@@ -3,17 +3,16 @@
 
 function configureZSH {
     echo "Configuring zsh..."
-    cd $HOME/dotfiles-temp
 
     # Deleting old config files
     echo "  Backing up old config files..."
     [ -f $HOME/.zshrc ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.zshrc $HOME/old-dotfiles/zsh/zshrc 
     [ -f $HOME/.oh-my-zsh ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.oh-my-zsh $HOME/old-dotfiles/zsh/oh-my-zsh
-    #[ -f $HOME/.p10k.zsh ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.p10k.zsh $HOME/old-dotfiles/zsh/p10k.zsh
+    [ -f $HOME/.p10k.zsh ] && mkdir -p $HOME/old-dotfiles/zsh && mv $HOME/.p10k.zsh $HOME/old-dotfiles/zsh/p10k.zsh
 
     # Installing oh-my-zsh
     echo "  Installing oh-my-zsh..."
-    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh &> /dev/null 
+    git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/oh-my-zsh &> /dev/null 
 
 
     # Installing oh-my-zsh plugins
@@ -33,15 +32,14 @@ function configureZSH {
     rm -rf ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     git clone --depth=1 git@github.com:romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k &> /dev/null
 
-    echo "  Moving config files to the right place..."
-    mv zsh/zshrc $HOME/.zshrc
-    #mv zsh/p10k.zsh $HOME/.p10k.zsh
-
+    echo "  Creating symlinks..."
+    ln -s $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
+    ln -s $HOME/dotfiles/zsh/p10k.zsh $HOME/.p10k.zsh
 }
 
 function configureNeovim {
     echo "Configuring neovim..."
-    cd $HOME/dotfiles-temp
+    cd $HOME/dotfiles
 
     # Deleting old config files
     [ -d $HOME/.config/nvim ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/nvim $HOME/old-dotfiles
@@ -50,8 +48,8 @@ function configureNeovim {
     rm -rf $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
     git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim &> /dev/null
 
-    echo "  Moving files to the right path..."
-    mv nvim $HOME/.config/
+    echo "  Creating symlinks..."
+    ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
     
     echo "  Syncing packages..."
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
@@ -59,30 +57,33 @@ function configureNeovim {
 
 function configureAlacritty {
     echo "Configuring alacritty..."
-    cd $HOME/dotfiles-temp
 
     # Deleting old config files
     [ -f $HOME/.alacritty.yml ] && echo "  Backing up old config files... " && mkdir -p $HOME/old-dotfiles && mkdir -p $HOME/old-dotfiles/alacritty && mv $HOME/.alacritty.yml $HOME/old-dotfiles/alacritty/
 
-    mv alacritty/config $HOME/.alacritty.yml
+    echo "  Creating symlinks..."
+    ln -s $HOME/dotfiles/alacritty/config $HOME/.alacritty.yml
 }
 
 function configurei3 {
     echo "Configuring i3..."
-    cd $HOME/dotfiles-temp
 
     # Deleting old config files
+    echo "  Creating symlinks..."
     [ -d $HOME/.config/i3 ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/i3 $HOME/old-dotfiles
 
-    mv i3 $HOME/.config/
+    ln -s $HOME/dotfiles/i3 $HOME/.config/i3
 }
 
 function configurei3bar {
     echo "Configuring i3status..."
-    cd $HOME/dotfiles-temp
 
+    # Deleting old config files
     [ -d $HOME/.config/i3status ] && echo "  Backing up old config files..." && mkdir -p $HOME/old-dotfiles && mv $HOME/.config/i3status $HOME/old-dotfiles
-    mv i3status $HOME/.config/
+
+    # Creating symlinks
+    echo "  Creating symlinks..."
+    ln -s $HOME/dotfiles/i3status $HOME/.config/i3status
 }
 
 
@@ -99,19 +100,15 @@ fi
 
 if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ]; then
     rm -rf $HOME/old-dotfiles
-    rm -rf $HOME/dotfiles-temp
+    rm -rf $HOME/dotfiles
     echo -e "\nDownloading dotfiles from repository..."
-    git clone git@github.com:MarcoPadeiroIPL/dotfiles.git $HOME/dotfiles-temp &> /dev/null
-    cd $HOME/dotfiles-temp
+    git clone git@github.com:MarcoPadeiroIPL/dotfiles.git $HOME/dotfiles &> /dev/null
 
     configureZSH
     configureNeovim
     configureAlacritty
     configurei3
     configurei3bar
-
-    echo "Cleaning up..."
-    rm -rf $HOME/dotfiles-temp
 
     if [ $(echo $SHELL) != "/bin/zsh" ]; then
         read -p "Make zsh default shell? [Y/n]" defaultshell
@@ -123,6 +120,7 @@ if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ];
 
     echo -e "\nDone!"
     echo "You may need to restart your X session for some changes to take effect."
+    echo "All the config files are saved in \"$HOME/dotfiles\""
     echo "Your old config files are backed up in \"$HOME/old-dotfiles\""
 
 fi
