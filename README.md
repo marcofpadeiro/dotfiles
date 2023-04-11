@@ -14,7 +14,7 @@ Currently it's optimized to run on Arch linux but any distro should work with so
 ## Installation 
 Download the bash file and execute it...
 ```
-curl -s https://raw.githubusercontent.com/MarcoPadeiroIPL/dotfiles/main/install.sh -o install.sh
+curl -s https://raw.githubusercontent.com/MarcoPadeiroIPL/dotfiles/desktop/install.sh -o install.sh
 ```
 
 

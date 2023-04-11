@@ -1,6 +1,7 @@
 #!/bin/bash
 # Install script dotfiles
 
+env="desktop"
 function configureZSH {
     echo "Configuring zsh..."
 
@@ -110,7 +111,7 @@ if [ "$configure" == "Y" ] || [ "$configure" == "y" ] || [ "$configure" == "" ];
     rm -rf $HOME/.old-dotfiles
     rm -rf $HOME/dotfiles
     echo -e "\nDownloading dotfiles from repository..."
-    git clone git@github.com:MarcoPadeiroIPL/dotfiles.git $HOME/dotfiles &> /dev/null
+    git clone -b $env git@github.com:MarcoPadeiroIPL/dotfiles.git $HOME/dotfiles &> /dev/null
 
     configureZSH
     configureNeovim
