@@ -4,10 +4,13 @@
 
 exec_always --no-startup-id xinput set-prop 'MSFT0001:00 06CB:CE2D Touchpad' 'libinput Tapping Enabled' 1
 exec_always --no-startup-id xinput set-prop 'MSFT0001:00 06CB:CE2D Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
+exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
+
 
 # keyboard speed
- exec_always --no-startup-id xset r rate 220 40
+exec_always --no-startup-id xset r rate 220 40
+
+exec_always --no-startup-id xrandr --output DisplayPort-2 --mode 1920x1080 --rate 239.76
 
 
 ####################################################
