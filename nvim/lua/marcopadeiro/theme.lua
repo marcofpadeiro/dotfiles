@@ -8,3 +8,6 @@ theme.setup({
 })
 
 theme.load()
+
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("myspecialcolors hi Normal ctermbg=red guibg=red")
