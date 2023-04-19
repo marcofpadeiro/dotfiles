@@ -4,10 +4,11 @@ if not status_ok then
 end
 
 theme.setup({
-    style = "darker" 
+    style = "darker",
+    transparent = true,
 })
 
 theme.load()
-
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-vim.cmd("myspecialcolors hi Normal ctermbg=red guibg=red")
+vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
+vim.cmd [[hi NonText guibg=NONE ctermbg=NONE]]
+vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]

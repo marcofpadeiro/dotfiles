@@ -5,7 +5,6 @@
     font-weight: bold;
     font-size: 16px;
     min-height: 0;
-    margin-left:10px;
 }
 
 window#waybar {
@@ -49,14 +48,12 @@ tooltip {
     border-radius: 10px;
 }
 
-#window,
-#network,
 #memory,
-#workspaces,
-#clock,
-#tray,
-
-#pulseaudio{
+#cpu,
+#pulseaudio,
+#bluetooth,
+#temperature,
+#network{
     background: #1e1e2e;
     opacity: 0.8;
     padding: 0px 10px;
@@ -65,39 +62,51 @@ tooltip {
     border: 1px solid #181825;
 }
 
-#pulseaudio {
-    border-radius: 10px 0px 0px 10px;
-}
-
-#tray {
-    border-radius: 10px;
-    margin-right: 10px;
-}
-
-#window {
-    border-radius: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-}
-
-
 #network {
     color: #f9e2af;
     border-radius: 10px 0px 0px 10px;
-    border-left: 0px;
     border-right: 0px;
 }
 
-#memory {
+#bluetooth {
     color: #89b4fa;
     border-radius: 0px 10px 10px 0px;
-    margin-right: 10px
-} 
+    border-left: 0px;
+    margin-right: 10px;
+}
+
+#cpu {
+    border-right: 0px;
+    border-left: 0px;
+    margin-left: 10px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#memory {
+    color: #cba6f7;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+#temperature {
+    color: #89b4fa;
+    border-right: 0px;
+    border-left: 0px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#temperature.critical {
+    color: #f9e2af;
+    border-right: 0px;
+    border-left: 0px;
+    border-radius: 0px 10px 10px 0px;
+}
 
 #pulseaudio {
     color: #89b4fa;
     border-left: 0px;
     border-right: 0px;
+    border-radius: 10px 0px 0px 10px;
 }
 
 #pulseaudio.microphone {
@@ -107,4 +116,5 @@ tooltip {
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
 }
+
 

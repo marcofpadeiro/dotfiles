@@ -37,17 +37,11 @@ else
 fi
 
 # aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zshrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.config/nvim"
+alias hyprrc="nvim ~/.config/nvim"
 alias ls='ls --color=auto'
-alias chrome='google-chrome-stable'
-alias pdf='evince'
-alias hdmi='. ~/scripts/hdmi.sh'
 alias vim='nvim'
-alias windows="vboxmanage startvm 'Windows 10' "
-alias mysql="mysql --auto-rehash -u marco -p"
-alias lamp="systemctl start mysql && systemctl start httpd"
-alias lamp-stop="systemctl stop mysql && systemctl stop httpd"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

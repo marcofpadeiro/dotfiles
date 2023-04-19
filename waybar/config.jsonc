@@ -7,30 +7,34 @@
     "gtk-layer-shell": true,
     "height": 50,
     "modules-left": [
-        "custom/clock"
+        "cpu",
+        "memory",
+        "temperature"
     ],
     "modules-center": [
-        "hyprland/window"
+        "custom/clock"
     ],
     "modules-right": [
         "network",
-        "memory",
+        "bluetooth",
         "pulseaudio",
         "pulseaudio#microphone"
     ],
-    "hyprland/window": {
-        "format": "{}"
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
-    },
     "custom/clock": {
-        "exec": "echo ' '$(date +'%H:%M')'  '",
+        "exec": "echo '  '$(date +'%H:%M')'  '",
         "interval": 5
     },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {num_connections}",
+        "format-disconnected": "󰂲 disconnected",
+        "format-disabled": "󰂲",
+        "tooltip-format": "{device_alias}",
+        "tooltip-format-connected": " {device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}"
+    },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "tooltip": false,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
@@ -61,15 +65,30 @@
         "scroll-step": 5
     },
     "memory": {
-        "format": "󰍛 {used:0.1f}G "
+        "format": "󰍛  {used:0.1f}G "
+    },
+    "cpu": {
+        "format": "   {usage}%"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{essid} - {ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+        "format-wifi": "{icon}   {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤮 Disconnected",
+        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C"
     }
 }
