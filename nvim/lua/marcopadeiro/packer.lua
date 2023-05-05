@@ -33,9 +33,12 @@ return require('packer').startup(function(use)
 
     -- Quality of life features AKA I need to learn all of this
     use 'lukas-reineke/indent-blankline.nvim'
-    use 'tpope/vim-commentary'      -- gc
-    use 'tpope/vim-surround'        -- cs"' cs'<q> ds" ds'
-    use 'akinsho/git-conflict.nvim' -- co = accept local changes || ct = accept remote changes || ca = accept both changes
+    use 'tpope/vim-commentary' -- gc
+    use 'tpope/vim-surround'   -- cs"' cs'<q> ds" ds'
+    use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+        require('git-conflict').setup()
+    end }
+    use 'andweeb/presence.nvim' -- discord rich presence
 
 
     use {
