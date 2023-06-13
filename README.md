@@ -7,14 +7,17 @@ Currently it's optimized to run on Arch linux but any distro should work with so
 ### Software used
 >- Text editor: Neovim
 >- Window manager: i3
->- Terminal emulator: Alacritty
+>- Terminal emulator: Kitty
 >- Shell: zsh
 >- Colorscheme: One Dark Pro deep
 
 ## Installation 
-Download the bash file and execute it...
+Clone the repo and execute the install.sh script
 ```
-curl -s https://raw.githubusercontent.com/MarcoPadeiroIPL/dotfiles/desktop/install.sh -o install.sh
+git clone https://github.com/marcofpadeiro/dotfiles.git ~/dotfiles
+```
+```
+./install.sh
 ```
 
 

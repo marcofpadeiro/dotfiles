@@ -1,7 +1,0 @@
-alacritty
-i3
-ttf-hack-nerd
-i3status
-dmenu
-neovim
-zsh
