@@ -63,7 +63,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # App Lauch Keys
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+p exec --no-startup-id firefox
 
 exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt

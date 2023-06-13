@@ -2,6 +2,7 @@
 # Install script dotfiles
 
 function configureZSH {
+    echo "Configuring ZSH..."
     echo "  Deleting old config..."
     rm -rf ~/.zsh ~/.zshrc ~/.p10k.zsh
 
@@ -78,12 +79,81 @@ function configurei3status {
     ln -s $PWD/i3status $HOME/.config/i3status
 }
 
-configureZSH
-configureNeovim
-configureKitty
-configurei3
-configurei3status
+function configuretmux {
+    echo "Configuring tmux..."
 
-echo -e "\nDone!"
-echo "You may need to restart your X session for some changes to take effect."
+    # Deleting old config files
+    echo "  Deleting old config..."
+    rm -rf $HOME/.tmux.conf
 
+    echo "  Creating symlinks..."
+    ln -s $PWD/tmux/config $HOME/.tmux.conf
+}
+
+    declare -A members=(
+        [1]="zsh"
+        [2]="nvim"
+        [3]="i3"
+        [4]="i3status"
+        [5]="tmux"
+        [6]="kitty"
+    )
+    
+declare -A selected
+
+# Display the menu
+echo "Select the items to configure:"
+
+for key in "${!members[@]}"; do
+    printf "%4d) %s\n" "$key" "${members[$key]}"
+done
+
+echo "Press 'q' to exit."
+
+# Process user input
+    read -p "Enter a selection: " input
+
+    # Exit if 'q' is pressed
+    if [[ $input == "q" ]]; then
+        break
+    fi
+
+    if [[ -z $input ]]; then
+        selected=($(seq 1 6))
+    fi
+
+    IFS=' ' read -ra selections <<< "$input"
+
+    # Validate and process each selection
+    for selection in "${selections[@]}"; do
+        # Check if the selection is a valid number
+        if [[ $selection =~ ^[0-9]+$ ]]; then
+            # Check if the selection is within the valid range
+            if [[ $selection -ge 1 && $selection -le ${#members[@]} ]]; then
+                # Toggle the selection
+                if [[ ${selected[$selection]} ]]; then
+                    unset "selected[$selection]"
+                else
+                    selected[$selection]=1
+                fi
+            else
+                echo "Invalid selection: $selection"
+            fi
+        else
+                echo "Invalid selection: $selection"
+        fi
+    done
+
+    for key in "${!selected[@]}"; do
+        case ${members[$key]} in
+            "zsh") configureZSH ;;
+            "nvim") configureNeovim ;;
+            "i3")configurei3 ;;
+            "i3status")configurei3status ;;
+            "tmux")configuretmux ;;
+            "kitty")configureKitty ;;
+        esac
+    done
+    
+    echo -e "\nDone!"
+    echo "You may need to restart your X session for some changes to take effect."
