@@ -8,6 +8,17 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- packer itself
     use 'nvim-lua/plenary.nvim'  -- a lot of other plugins use this one
 
+
+    use({
+        "xiyaowong/nvim-transparent",
+        config = function()
+            require("transparent").setup {
+                enable = true,
+            }
+        end
+    })
+
+
     -- Syntax Highlight and theme
     use 'navarasu/onedark.nvim'
     use {
