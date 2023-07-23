@@ -2,21 +2,26 @@
 #                    STARTUP                      #
 ####################################################
 
-exec_always --no-startup-id xinput set-prop 'MSFT0001:00 06CB:CE2D Touchpad' 'libinput Tapping Enabled' 1
-exec_always --no-startup-id xinput set-prop 'MSFT0001:00 06CB:CE2D Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
+exec_always --no-startup-id xinput set-prop 10 'libinput Tapping Enabled' 1
+exec_always --no-startup-id xinput set-prop 10 'libinput Natural Scrolling Enabled' 1
+exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
 
 # keyboard speed
- exec_always --no-startup-id xset r rate 220 40
+exec_always --no-startup-id xset r rate 220 40
+exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
+exec_always --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
 
+# wallpaper
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id dunst
 
 ####################################################
 #                    AESTHETICS                    #
 ####################################################
 for_window [class="^.*"] border pixel 1
-font pango:monospace 8
-
-
+font pango:Hack Nerd Font Mono 8
 
 
 ####################################################
@@ -41,13 +46,9 @@ bindsym $mod+Shift+q kill
 
 # Run DMenu
 bindsym $mod+d exec --no-startup-id dmenu_run
- 
 
 # PrintScreen
 bindsym Print exec --no-startup-id flameshot gui
-
-# HDMI
-bindsym XF86Calculator exec --no-startup-id . ~/scrips/hdmi.sh 
 
 # Brighness Keys
 bindsym XF86MonBrightnessUp exec --no-startup-id . ~/.config/i3/brightness.sh +
@@ -60,10 +61,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # App Lauch Keys
-bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+p exec --no-startup-id firefox
 
-exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle' -layout us,pt
 
 
 ####################################################
@@ -188,13 +188,3 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bar {
     status_command i3status
 }
-
-
-
-
-
-
-
-
-
-
