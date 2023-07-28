@@ -30,3 +30,7 @@ fpath=(/home/marco/.zsh/plugins/zsh-completions/src $fpath)
 source /home/marco/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 source /home/marco/.zsh/plugins/git/git.plugin.zsh
 source /home/marco/.zsh/plugins/z/z.plugin.zsh
+
+bindkey '^I'   complete-word       # tab          | complete
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+
