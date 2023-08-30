@@ -1,0 +1,17 @@
+XF86MonBrightnessUp
+    ./dotfiles/scripts/brightness +20
+    
+XF86MonBrightnessDown
+    ./dotfiles/scripts/brightness -20
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +10% 
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -10% 
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle 
+
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SINK@ toggle 

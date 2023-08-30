@@ -1,21 +1,39 @@
-local status_ok, nvimtreesitter = pcall(require, "nvim-treesitter.configs")
+local status_ok = pcall(require, "nvim-treesitter")
 if not status_ok then
     return
 end
 
-nvimtreesitter.setup {
-  ensure_installed = { "c", "lua", "vim", "rust", "html", "css", "php", "javascript", "vimdoc", "query", "bash", "c_sharp", "cpp", "dockerfile", "go", "java", "json", "markdown", "python", "typescript" },
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  sync_install = true,
-  auto_install = true,
-  ignore_install = { },
-
-  highlight = {
-    enable = true,
-    disable = {},
-    additional_vim_regex_highlighting = true,
-  },
-  indent = {
-    enable = true,
-  },
+require 'nvim-treesitter.configs'.setup {
+    highlight = { enable = true },
+    indent = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
+    ensure_installed = {
+        "c",
+        "lua",
+        "rust",
+        "html",
+        "css",
+        "typescript",
+        "bash",
+        "go"
+    },
 }
+
+local ask_install = {}
+function _G.ensure_treesitter_language_installed()
+    local parsers = require "nvim-treesitter.parsers"
+    local lang = parsers.get_buf_lang()
+    if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) and ask_install[lang] ~= false then
+        vim.schedule_wrap(function()
+            vim.ui.select({ "yes", "no" }, { prompt = "Install tree-sitter parsers for " .. lang .. "?" }, function(item)
+                if item == "yes" then
+                    vim.cmd("TSInstall " .. lang)
+                elseif item == "no" then
+                    ask_install[lang] = false
+                end
+            end)
+        end)()
+    end
+end
+
+vim.cmd [[autocmd FileType * :lua ensure_treesitter_language_installed()]]

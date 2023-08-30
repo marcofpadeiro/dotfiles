@@ -1,11 +1,30 @@
+local status_ok = pcall(require, "telescope")
+if not status_ok then
+    return
+end
+
 local builtin = require('telescope.builtin')
+
+function Cht_current_file()
+    local filetype = vim.bo.filetype
+    vim.cmd(string.format('!tmux split-window -h cht %s', filetype))
+end
+
+vim.keymap.set('n', '<leader>md', ':MarkdownPreviewToggle<CR>')
+vim.keymap.set('n', '<leader>x', ':!chmod +x %<CR>')
+
+
+
+vim.keymap.set('n', '<C-S-i>', ':!tmux split-window -h cht<CR><CR>')
+vim.keymap.set('n', '<C-i>', ':lua Cht_current_file()<CR><CR>')
+vim.keymap.set('n', '<C-e>', ':!tmux new-window fzf-tmux<CR><CR>')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
-vim.keymap.set('n', "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+vim.keymap.set('n', '<leader>t', vim.diagnostic.open_float)
 vim.keymap.set('i', '<C-j>', '<cmd>lua require("cmp").select_next_item()<CR>')
 vim.keymap.set('i', '<C-k>', '<cmd>lua require("cmp").select_prev_item()<CR>')
 vim.keymap.set('i', '<C-a>', '<cmd>lua require("cmp").complete()<CR>')
@@ -42,5 +61,5 @@ vim.keymap.set('n', "<C-j>", "<C-w>j")
 vim.keymap.set('n', "<C-k>", "<C-w>k")
 vim.keymap.set('n', "<C-l>", "<C-w>l")
 
--- Nvimtree
-vim.keymap.set('n', "<leader>e", ":NvimTreeToggle<cr>")
+-- NeoTree
+vim.keymap.set('n', "<leader>e", ":NeoTreeFocusToggle<cr>")

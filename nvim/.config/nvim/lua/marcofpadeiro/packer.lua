@@ -19,22 +19,29 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
     }
-
     use { "catppuccin/nvim", as = "catppuccin" }
 
     use "mbbill/undotree"
 
-    use 'nvim-tree/nvim-web-devicons'
-    use {
-        'nvim-tree/nvim-tree.lua',
-        config = function()
-            require("nvim-tree").setup()
-        end,
+    use { 'nvim-neo-tree/neo-tree.nvim',
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
     }
 
+    use "iamcco/markdown-preview.nvim"
+
     use 'nvim-lualine/lualine.nvim'
+
+    use 'simrat39/rust-tools.nvim'
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -57,18 +64,16 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        "NvChad/nvterm",
-        config = function()
-            require("nvterm").setup()
-        end,
-    }
-
     use 'ThePrimeagen/harpoon'
 
-    use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0', config = function()
-        require('git-conflict').setup()
-    end }
+    use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
+
+    use {
+        'goolord/alpha-nvim',
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+        end
+    }
 
     if packer_bootstrap then
         require('packer').sync()

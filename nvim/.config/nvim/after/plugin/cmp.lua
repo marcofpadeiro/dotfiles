@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 cmp.setup({
-  mapping = {
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-  }
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    }
 })
