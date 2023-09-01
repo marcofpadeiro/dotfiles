@@ -15,3 +15,6 @@ XF86AudioMute
 
 XF86AudioMicMute
     pactl set-source-mute @DEFAULT_SINK@ toggle 
+
+Print
+    flameshot gui

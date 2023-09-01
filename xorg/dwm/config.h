@@ -36,6 +36,8 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int attachbelow = 1;    /* 1 means attach after the currently active window */
+
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -64,6 +66,7 @@ static const char *browser[]  = { "brave", NULL };
 static const char *spotify[]  = { "spotify", NULL };
 static const char *discord[]  = { "discord", NULL };
 static const char *filebrowser[]  = { "thunar", NULL };
+static const char *reset_keyboard[]  = { "bash /home/marco/dotfiles/scripts/keyboard_config.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +107,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_y,      spawn,          {.v = discord } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = spotify } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = filebrowser } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = reset_keyboard } },
 };
 
 /* button definitions */
