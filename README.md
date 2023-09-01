@@ -6,18 +6,16 @@ there is still a lot of work to be done but it fits all my current needs.
 Currently it's optimized to run on Arch linux but any distro should work with some tweaks.
 ### Software used
 >- Text editor: Neovim
->- Window manager: i3
->- Terminal emulator: Kitty
+>- Window manager: dwm
+>- Terminal emulator: st
 >- Shell: zsh
->- Colorscheme: One Dark Pro deep
+>- Colorscheme: Catppuccin Mocha
 
 ## Installation 
 Clone the repo and execute the install.sh script
 ```
 git clone https://github.com/marcofpadeiro/dotfiles.git ~/dotfiles
 ```
-```
-./install.sh
-```
+
 
 
