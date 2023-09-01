@@ -26,3 +26,5 @@ if echo "$languages" | grep -qs $selected; then
 else
     bash -c "curl cht.sh/$selected~$(echo "$query" | tr " " "+") | less -R"
 fi
+
+tmux kill-pane -t 1
