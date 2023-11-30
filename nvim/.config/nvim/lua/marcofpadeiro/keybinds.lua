@@ -10,13 +10,17 @@ function Cht_current_file()
     vim.cmd(string.format('!tmux split-window -h cht %s', filetype))
 end
 
+function CompileCode(param)
+    vim.cmd(string.format('!tmux split-window -h /home/marco/dotfiles/scripts/compile.sh --%s %s', param, vim.fn.getcwd()))
+end
+
 vim.keymap.set('n', '<leader>md', ':MarkdownPreviewToggle<CR>')
 vim.keymap.set('n', '<leader>x', ':!chmod +x %<CR>')
 
-
-
 vim.keymap.set('n', '<C-S-i>', ':!tmux split-window -h cht<CR><CR>')
 vim.keymap.set('n', '<C-i>', ':lua Cht_current_file()<CR><CR>')
+vim.keymap.set('n', '<leader>c', ':lua CompileCode("compile")<CR><CR>')
+vim.keymap.set('n', '<leader>v', ':lua CompileCode("edit")<CR><CR>')
 vim.keymap.set('n', '<C-e>', ':!tmux new-window fzf-tmux<CR><CR>')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -43,12 +47,11 @@ vim.keymap.set('n', "<leader>l", ':lua require("harpoon.ui").nav_file(4)<CR>')
 vim.keymap.set('n', "<leader>m", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
 
--- nvterm
-vim.keymap.set('n', "<A-h>", ':lua require("nvterm.terminal").toggle("horizontal")<CR>')
-vim.keymap.set('n', "<A-v>", ':lua require("nvterm.terminal").toggle("vertical")<CR>')
-
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('v', ">", ">gv")
+vim.keymap.set('v', "<", "<gv")
 
 vim.keymap.set('n', "<leader>y", "\"+y")
 vim.keymap.set('v', "<leader>y", "\"+y")
@@ -61,5 +64,6 @@ vim.keymap.set('n', "<C-j>", "<C-w>j")
 vim.keymap.set('n', "<C-k>", "<C-w>k")
 vim.keymap.set('n', "<C-l>", "<C-w>l")
 
--- NeoTree
-vim.keymap.set('n', "<leader>e", ":NeoTreeFocusToggle<cr>")
+-- Better buffer navigation
+vim.keymap.set('n', "<S-l>", ":bnext<CR>")
+vim.keymap.set('n', "<S-h>", ":bprevious<CR>")
