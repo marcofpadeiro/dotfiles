@@ -1,0 +1,110 @@
+{
+    "height": 37, 
+    "modules-left": ["sway/workspaces", "cpu", "memory", "temperature", "custom/media"],
+    "modules-center": ["clock"],
+    "modules-right": ["sway/language", "pulseaudio", "backlight", "battery", "network", "bluetooth", "tray"],
+
+    "sway/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "sway/language": {
+        "format": "{short} 󰌌",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	    "format": "{:%H:%M}  ",
+	    "format-alt": "{:%A, %B %d, %Y}  "
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{used}G  "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [" ", " ", " "]
+    },
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": [""],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
+    },
+    "bluetooth": {
+	    "format-disabled": "󰂲", // an empty format will hide the module
+	    "format-off": "󰂲 off",
+	    "format-on": "󰂯",
+        "on-click": "rofi-bluetooth",
+	    "format-connected": "󰂱 {device_alias}",
+	    "tooltip-format": "{controller_alias}\t{controller_address}",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "tooltip-format": "{timeTo}, {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": " ",
+        "format-alt": "󱐋 {power}W",
+        "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"]
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} 󰈀",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "",
+        "format-alt": "{essid} {signalStrength}%",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤯", "󰤟", "󰤢",  "󰤥", "󰤨" ],
+        "on-click-right": "rofi-wifi-menu",
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "   {volume}% {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", " "]
+        },
+        "tooltip-format": "{desc}, {volume}%",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-middle": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause",
+    },
+}
