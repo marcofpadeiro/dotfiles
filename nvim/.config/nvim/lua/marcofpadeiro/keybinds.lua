@@ -11,7 +11,7 @@ function Cht_current_file()
 end
 
 function CompileCode(param)
-    vim.cmd(string.format('!tmux split-window -h /home/marco/dotfiles/scripts/compile.sh --%s %s', param, vim.fn.getcwd()))
+    vim.cmd(string.format('!tmux split-window -h /home/marco/dotfiles/scripts/compile.sh %s %s', param, vim.fn.getcwd()))
 end
 
 vim.keymap.set('n', '<leader>md', ':MarkdownPreviewToggle<CR>')

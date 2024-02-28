@@ -1,70 +1,74 @@
 return {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    dependencies = {
-        -- LSP Support
-        { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  dependencies = {
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'hrsh7th/nvim-cmp'},
+    {'L3MON4D3/LuaSnip'},
+  },
+  config = function()
+    local lsp_zero = require('lsp-zero')
+    local keymap = vim.keymap.set
 
-        -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'L3MON4D3/LuaSnip' },
+    lsp_zero.on_attach(function(client, bufnr)
+      local opts = {buffer = bufnr, remap = false}
 
-        -- Rust
-        { 'simrat39/rust-tools.nvim' },
-    },
-    config = function()
-        local lsp = require('lsp-zero').preset('recommended')
-        lsp.preset("recommended")
+      keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
+      keymap("n", "K", function() vim.lsp.buf.hover() end, opts)
+      keymap("n", "<leader>sd", function() vim.diagnostic.open_float() end, opts)
+      keymap("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+      keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+      keymap("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    end)
 
-        local cmp = require('cmp')
+    require('mason').setup({})
+    require('mason-lspconfig').setup({
+      ensure_installed = {'tsserver', 'rust_analyzer', 'lua_ls'},
+      handlers = {
+        lsp_zero.default_setup,
+      }
+    })
 
-        cmp.setup({
-            mapping = {
-                ['<CR>'] = cmp.mapping.confirm({ select = false }),
-            }
-        })
+    lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'lua_ls'})
 
-        lsp.set_sign_icons({
-            error = '✘',
-            warn = '',
-            hint = '⚑',
-            info = '󰙎'
-        })
+    local cmp = require('cmp')
+    local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
-        lsp.ensure_installed({
-            'lua_ls',
-            'tsserver',
-            'clangd',
-            'rust_analyzer',
-            'bashls',
-            'cssls',
-            'dockerls',
-            'html',
-            'jsonls',
-            'marksman',
-            'gopls',
-            'pylsp',
-            'sqlls',
-            'tsserver',
-        })
+    cmp.setup({
+      sources = {
+        {name = 'path'},
+        {name = 'nvim_lsp'},
+        {name = 'nvim_lua'},
+        {name = 'luasnip', keyword_length = 2},
+        {name = 'buffer', keyword_length = 3},
+      },
+      formatting = lsp_zero.cmp_format(),
+      mapping = cmp.mapping.preset.insert({
+        ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-a>'] = cmp.mapping.confirm({ select = true }),
+        ['<Cr>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = nil,
+        ['<S-Tab>'] = nil,
+      }),
+    })
 
-        local lspconfig = require('lspconfig')
+    local lspconfig = require('lspconfig')
 
-        -- lua
-        lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+    lspconfig.tsserver.setup({
+      single_file_support = false,
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = true
+      end,
+    })
 
-        -- c
-        lspconfig.clangd.setup {}
-
-        -- rust
-        lsp.configure('rust_analyzer', {
-            cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
-        })
-
-
-        lsp.setup()
-    end
+  end
 }
