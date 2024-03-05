@@ -4,7 +4,7 @@ end
 
 vim.keymap.set('n', '<leader>x', ':!chmod +x %<CR>')
 
-vim.keymap.set('n', '<leader>c', ':lua CompileCode("compile")<CR><CR>')
+vim.keymap.set('n', '<leader>c', ':w<CR>:lua CompileCode("compile")<CR><CR>')
 vim.keymap.set('n', '<leader>v', ':lua CompileCode("edit")<CR><CR>')
 vim.keymap.set('n', '<C-e>', ':!tmux new-window fzf-tmux<CR><CR>')
 
@@ -13,6 +13,7 @@ vim.keymap.set('n', "<leader>w", "<cmd>:w<CR>")
 
 -- Undo Tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>t', vim.diagnostic.open_float)
 
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv")
