@@ -13,7 +13,6 @@ vim.keymap.set('n', "<leader>w", "<cmd>:w<CR>")
 
 -- Undo Tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-vim.keymap.set('n', '<leader>t', vim.diagnostic.open_float)
 
 vim.keymap.set("n", "<leader>gi", vim.cmd.Neogit)
 

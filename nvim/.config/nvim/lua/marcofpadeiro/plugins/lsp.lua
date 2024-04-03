@@ -13,7 +13,7 @@ return {
         { 'L3MON4D3/LuaSnip' },
     },
     config = function()
-        local lsp = require('lsp-zero')
+        local lsp = require('lsp-zero').preset()
 
         local keymap = vim.keymap.set
 
@@ -26,6 +26,8 @@ return {
             keymap("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
             keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
             keymap("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+            lsp.buffer_autoformat()
         end)
 
 
