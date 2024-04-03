@@ -41,4 +41,43 @@ return {
     },
 
     'github/copilot.vim',
+
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",  -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
+
+            "nvim-telescope/telescope.nvim",
+        },
+        config = true
+    },
+
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local harpoon = require("harpoon")
+
+            -- REQUIRED
+            harpoon:setup()
+
+            vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+            vim.keymap.set("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+            vim.keymap.set("n", "<leader>h", function() harpoon:list():select(1) end)
+            vim.keymap.set("n", "<leader>j", function() harpoon:list():select(2) end)
+            vim.keymap.set("n", "<leader>k", function() harpoon:list():select(3) end)
+            vim.keymap.set("n", "<leader>l", function() harpoon:list():select(4) end)
+        end,
+    }
+
 }

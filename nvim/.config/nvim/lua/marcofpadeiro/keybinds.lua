@@ -14,6 +14,8 @@ vim.keymap.set('n', "<leader>w", "<cmd>:w<CR>")
 -- Undo Tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+vim.keymap.set("n", "<leader>gi", vim.cmd.Neogit)
+
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv")
 

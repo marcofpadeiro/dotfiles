@@ -13,13 +13,21 @@ return {
         { 'L3MON4D3/LuaSnip' },
     },
     config = function()
-        require('java').setup()
-        local lsp = require('lsp-zero').preset({})
+        local lsp = require('lsp-zero')
+
+        local keymap = vim.keymap.set
 
         lsp.on_attach(function(client, bufnr)
-            lsp.default_keymaps({ buffer = bufnr })
-            lsp.buffer_autoformat()
+            local opts = { buffer = bufnr, remap = false }
+
+            keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
+            keymap("n", "K", function() vim.lsp.buf.hover() end, opts)
+            keymap("n", "<leader>t", function() vim.diagnostic.open_float() end, opts)
+            keymap("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+            keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+            keymap("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end)
+
 
         lsp.ensure_installed({
             'tsserver',      -- typescript/javascrip
@@ -64,7 +72,5 @@ return {
                 ['<S-Tab>'] = nil,
             }),
         })
-
-        require('lspconfig').jdtls.setup({})
     end
 }
