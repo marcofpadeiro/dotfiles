@@ -27,6 +27,8 @@ configure_zsh() {
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZDOTDIR/plugins/zsh-autosuggestions > /dev/null 2>&1
     echo -e "\tCloning powerlevel10k..."
     git clone https://github.com/romkatv/powerlevel10k $ZDOTDIR/themes/powerlevel10k > /dev/null 2>&1
+    echo -e "\tCloning zsh-vi-mode..."
+    git clone https://github.com/jeffreytse/zsh-vi-mode.git $ZDOTDIR/plugins/zsh-vi-mode > /dev/null 2>&1 
 
     mkdir -p $ZDOTDIR/plugins/git $ZDOTDIR/plugins/z
     echo -e "\tCloning git plugin..."

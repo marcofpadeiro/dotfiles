@@ -21,7 +21,7 @@ get_wifi() {
 }
 
 get_date() {
-    date +"%F %R"
+    date +"%d %b %R"
 }
 
 get_cpu_usage() {
