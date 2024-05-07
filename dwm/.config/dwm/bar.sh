@@ -36,11 +36,12 @@ get_temperature() {
 
 get_battery() {
     percentage=$(cat /sys/class/power_supply/BAT0/capacity)
-    power_draw=$(echo "scale=2; $(cat /sys/class/power_supply/BAT0/energy_now) / 1000000" | bc)
+    power_draw=$(echo "scale=2; $(cat /sys/class/power_supply/BAT0/power_now) / 1000000" | bc)
     status=$(cat /sys/class/power_supply/BAT0/status)
 
     if [ "$status" = "Charging" ]; then
         icon="" 
+        echo "$icon $percentage%"
     else
         if [ "$percentage" -ge 90 ]; then
             icon="" 
@@ -53,9 +54,9 @@ get_battery() {
         else
             icon=""
         fi
+        echo "$icon $percentage% ($power_draw W)"
     fi
 
-    echo "$icon $percentage% ($power_draw W)"
 }
 
 get_memory() {
