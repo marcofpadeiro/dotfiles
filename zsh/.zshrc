@@ -39,18 +39,13 @@ alias vimrc="nvim ~/.config/nvim"
 alias hyprrc="nvim ~/.config/nvim"
 alias ls='ls --color=auto'
 alias vim='nvim'
-alias cat='bat'
 alias rm='rm -i'
-alias poweroff='loginctl poweroff'
-alias reboot='loginctl reboot'
-
-
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
 source $HOME/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/plugins/git/git.plugin.zsh
 source $HOME/.zsh/plugins/z/z.plugin.zsh
 
@@ -60,10 +55,3 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# if [ "$(tty)" = "/dev/tty1" ]; then
-#     exec dbus-launch --exit-with-session sway
-# fi
-
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
