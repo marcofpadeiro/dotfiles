@@ -1,4 +1,4 @@
 nvim/.config/nvim/lazy-lock.json
-xorg/.config/xorg/*
-!xorg/.config/xorg/config.h
-!xorg/.config/xorg/bar.sh
+dwm/.config/dwm/*
+!dwm/.config/dwm/config.h
+!dwm/.config/dwm/bar.sh
