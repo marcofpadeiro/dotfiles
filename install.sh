@@ -48,16 +48,17 @@ configure_dwm() {
 
     echo -e "\tCompiling..."
     make PREFIX=$HOME/.local/ install > /dev/null 2>&1
+    cd - > /dev/null
 }
 
 install_fonts() {
     mkdir -p $HOME/.local/share/fonts/ttf
     echo -e "\tCloning Hack Nerd Font..."
-    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip -o /tmp/Hack.zip > /dev/null 2>&1
+    wget -O /tmp/Hack.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip > /dev/null 2>&1
     echo -e "\tCloning Iosevka Nerd Font..."
-    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -o /tmp/Iosevka.zip > /dev/null 2>&1
+    wget -O /tmp/Iosevka.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip > /dev/null 2>&1
     echo -e "\tCloning JetBrains Nerd Font..."
-    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -o /tmp/JetBrainsMono.zip > /dev/null 2>&1
+    wget -O /tmp/JetbrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip > /dev/null 2>&1
 
     echo -e "\tExtracting Hack Nerd Font..."
     unzip /tmp/Hack.zip -d $HOME/.local/share/fonts/ttf/Hack > /dev/null 2>&1

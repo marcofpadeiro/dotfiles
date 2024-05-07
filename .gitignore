@@ -5,3 +5,4 @@ dwm/.config/dwm/*
 tmux/.config/tmux/plugins
 zsh/.config/zsh/plugins
 zsh/.config/zsh/themes
+zsh/.config/zsh/zcompdump
