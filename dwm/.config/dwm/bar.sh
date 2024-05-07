@@ -24,6 +24,11 @@ get_date() {
     date +"%d %b %R"
 }
 
+get_brightness() {
+    bright=$(brightnessctl | grep "Current brightness" | cut -d '(' -f 2 | cut -d ')' -f 1)
+    echo " $bright"
+}
+
 get_cpu_usage() {
     cpu=$(mpstat 1 1 | awk '/Average/ {printf "%.0f%%", 100 - $NF}')
     echo " $cpu"
@@ -64,4 +69,4 @@ get_memory() {
     echo " $used_ram"
 }
 
-xsetroot -name "$(get_wifi) | $(get_temperature) | $(get_cpu_usage) | $(get_memory) | $(get_battery) | $(get_date)"
+xsetroot -name "$(get_wifi) | $(get_temperature) | $(get_brightness) | $(get_cpu_usage) | $(get_memory) | $(get_battery) | $(get_date)"

@@ -70,14 +70,48 @@ install_fonts() {
     unzip /tmp/JetBraingsMono.zip -d $HOME/.local/share/fonts/ttf/JetBrainsMono > /dev/null 2>&1
 }
 
-echo ":: Creating symm links..."
-stow_stuff
+link_tlp() { 
+    sudo ln -svf $(pwd)/tlp/tlp.conf /etc/tlp.conf
+}
 
-echo ":: Configuring zsh..."
-configure_zsh
+link_scripts() {
+    find $(pwd)/scripts -type f | while IFS= read -r line; do 
+        name=$(basename $line | cut -d '.' -f 1)
+        ln -sv $line $HOME/.local/bin/$name
+    done
+}
 
-echo ":: Configuring dwm..."
-configure_dwm
+ask() {
+    read -p "$1 [Y/n] " resp
+    [[ "${resp,,}" =~ ^(y|)$ ]]
+}
 
-echo ":: Installing nerd fonts..."
-install_fonts
+if ask "Stow stuff?"; then
+    echo ":: Creating symm links..."
+    stow_stuff
+fi
+
+if ask "Configure zsh?"; then
+    echo ":: Configuring zsh..."
+    configure_zsh
+fi
+
+if ask "Configure dwm?"; then
+    echo ":: Configuring dwm..."
+    configure_dwm
+fi
+
+if ask "Install fonts?"; then
+    echo ":: Installing nerd fonts..."
+    install_fonts
+fi
+
+if ask "Create tlp.conf sym link?"; then
+    echo ":: Linking tlp.conf (needs root)..."
+    link_tlp
+fi
+
+if ask "Create scripts sym link to .local/bin?"; then
+    echo ":: Linking scripts to .local/bin ..."
+    link_scripts
+fi

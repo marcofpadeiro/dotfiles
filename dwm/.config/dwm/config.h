@@ -29,7 +29,6 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {"Gimp", NULL, NULL, 0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, -1},
 };
 
@@ -71,8 +70,16 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *browsercmd[] = {"firefox", NULL};
 static const char *screenshotcmd[] = {"flameshot", "gui", NULL};
-static const char *brightupcmd[] = {"brightnessctl", "set", "+5%", NULL};
-static const char *brightdowncmd[] = {"brightnessctl", "set", "5%-", NULL};
+static const char *brightup[] = {"brightnessctl", "set", "+5%", NULL};
+static const char *brightdown[] = {"brightnessctl", "set", "5%-", NULL};
+static const char *volumeup[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
+                                 "+5%"};
+static const char *volumedown[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
+                                   "-5%"};
+static const char *volumemute[] = {"pactl", "set-sink-mute", "@DEFAULT_SINK@",
+                                   "toggle"};
+static const char *micmute[] = {"pactl", "set-sink-mute", "@DEFAULT_SOURCE@",
+                                "toggle"};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -80,8 +87,12 @@ static const Key keys[] = {
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_x, spawn, {.v = browsercmd}},
     {0, XK_Print, spawn, {.v = screenshotcmd}},
-    {0, XF86XK_MonBrightnessUp, spawn, {.v = brightupcmd}},
-    {0, XF86XK_MonBrightnessDown, spawn, {.v = brightdowncmd}},
+    {0, XF86XK_MonBrightnessUp, spawn, {.v = brightup}},
+    {0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown}},
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}},
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}},
+    {0, XF86XK_AudioMute, spawn, {.v = volumemute}},
+    {0, XF86XK_AudioMicMute, spawn, {.v = micmute}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
