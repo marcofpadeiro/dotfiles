@@ -7,15 +7,6 @@ Currently it's optimized to run on Arch linux but any distro should work with so
 ### Software used
 >- Text editor: Neovim
 >- Window manager: dwm
->- Terminal emulator: st
+>- Terminal emulator: Alacritty
 >- Shell: zsh
->- Colorscheme: Catppuccin Mocha
-
-## Installation 
-Clone the repo and execute the install.sh script
-```
-git clone https://github.com/marcofpadeiro/dotfiles.git ~/dotfiles
-```
-
-
-
+>- Colorscheme: Tokyo Night
