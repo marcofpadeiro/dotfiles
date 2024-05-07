@@ -50,6 +50,23 @@ configure_dwm() {
     make PREFIX=$HOME/.local/ install > /dev/null 2>&1
 }
 
+install_fonts() {
+    mkdir -p $HOME/.local/share/fonts/ttf
+    echo -e "\tCloning Hack Nerd Font..."
+    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip -o /tmp/Hack.zip > /dev/null 2>&1
+    echo -e "\tCloning Iosevka Nerd Font..."
+    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -o /tmp/Iosevka.zip > /dev/null 2>&1
+    echo -e "\tCloning JetBrains Nerd Font..."
+    curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -o /tmp/JetBrainsMono.zip > /dev/null 2>&1
+
+    echo -e "\tExtracting Hack Nerd Font..."
+    unzip /tmp/Hack.zip -d $HOME/.local/share/fonts/ttf/Hack > /dev/null 2>&1
+    echo -e "\tExtracting Iosevka Nerd Font..."
+    unzip /tmp/Iosevka.zip -d $HOME/.local/share/fonts/ttf/Iosevka > /dev/null 2>&1
+    echo -e "\tExtracting JetBrains Nerd Font..."
+    unzip /tmp/JetBraingsMono.zip -d $HOME/.local/share/fonts/ttf/JetBrainsMono > /dev/null 2>&1
+}
+
 echo ":: Creating symm links..."
 stow_stuff
 
@@ -58,3 +75,6 @@ configure_zsh
 
 echo ":: Configuring dwm..."
 configure_dwm
+
+echo ":: Installing nerd fonts..."
+install_fonts
