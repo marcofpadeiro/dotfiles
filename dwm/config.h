@@ -1,11 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 
-/* appearance */
-static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 1;           /* 0 means no bar */
-static const int topbar = 1;            /* 0 means bottom bar */
+static const unsigned int borderpx = 1;
+static const unsigned int snap = 32;
+static const unsigned int systraypinning = 0;
+static const unsigned int systrayonleft = 0;
+static const unsigned int systrayspacing = 2;
+static const int systraypinningfailfirst = 1;
+static const int showsystray = 1;
+static const int showbar = 1;
+static const int topbar = 1;
 static const char *fonts[] = {"monospace:size=11",
                               "Hack Nerd Font Mono:size=19"};
 static const char dmenufont[] = "Hack Nerd Font Mono:size=11";

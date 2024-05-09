@@ -3,9 +3,6 @@ stow_stuff() {
     stow alacritty
     echo -e "\t$HOME/.config/alacritty -> $(pwd)/alacritty/.config/alacritty"
 
-    stow dwm
-    echo -e "\t$HOME/.config/dwm -> $(pwd)/dwm/.config/dwm"
-
     stow nvim
     echo -e "\t$HOME/.config/nvim -> $(pwd)/nvim/.config/nvim"
 
@@ -19,6 +16,8 @@ stow_stuff() {
 
 configure_zsh() {
     ZDOTDIR="$HOME/.config/zsh"
+
+    echo 'ZDOTDIR="$HOME/.config/zsh"' > $HOME/.zshenv
     echo -e "\tCloning zsh-completions..."
     git clone https://github.com/zsh-users/zsh-completions $ZDOTDIR/plugins/zsh-completions > /dev/null 2>&1
     echo -e "\tCloning zsh-syntax-highlighting..."
@@ -42,15 +41,21 @@ configure_tmux() {
 }
 
 configure_dwm() {
-    cd dwm/.config/dwm
     echo -e "\tCloning..."
-    git init > /dev/null 2>&1
-    git remote add origin https://git.suckless.org/dwm > /dev/null 2>&1
-    git pull origin main > /dev/null 2>&1
+    git clone https://git.suckless.org/dwm ~/.config/dwm
+
+    ln -svf $(pwd)/dwm/config.h $HOME/.config/dwm/config.h
+    ln -svf $(pwd)/dwm/bar.sh $HOME/.config/dwm/bar.sh
+
+    cd $HOME/.config/dwm
+    echo -e "\tAdding patches..."
+    curl https://dwm.suckless.org/patches/systray/dwm-systray-20230922-9f88553.diff -o $HOME/.config/dwm/dwm-systray-20230922-9f88553.diff
+    git apply dwm-systray-20230922-9f88553.diff 
 
     echo -e "\tCompiling..."
-    make PREFIX=$HOME/.local/ install > /dev/null 2>&1
-    cd - > /dev/null
+    make PREFIX=$HOME/.local clean install > /dev/null 2>&1
+
+    cd -
 }
 
 install_fonts() {
