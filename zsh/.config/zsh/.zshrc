@@ -19,10 +19,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 export EDITOR='nvim'
 export ZVM_CURSOR_STYLE_ENABLED=false
 
-
 bindkey -s '^e' 'fzf-tmux\n'
-bindkey -s '^i' 'cht\n'
-
 
 # aliases
 alias zshrc="nvim ~/.config/zsh/.zshrc"

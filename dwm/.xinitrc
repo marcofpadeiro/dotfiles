@@ -1,13 +1,11 @@
-# startup config
-xset r rate 220 40 &
-setxkbmap -layout us,pt -option 'grp:alt_shift_toggle' &
-setxkbmap -option 'ctrl:nocaps' &
 
 # startup programs
 flameshot &
-/usr/lib/polkit-kde-authentication-agent-1 &
-corectrl &
-xrandr --output DisplayPort-0 --mode 1920x1080 --rate 240 &
+nm-applet &
+
+xinput set-prop 10 "libinput Natural Scrolling Enabled" 1 &
+xinput set-prop 10 "libinput Tapping Enabled" 1 &
+xset r rate 220 40 &
 
 # bar
 while true; do

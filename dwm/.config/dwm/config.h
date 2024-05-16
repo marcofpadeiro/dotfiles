@@ -1,0 +1,1 @@
+/home/marco/dotfiles/dwm/config.h

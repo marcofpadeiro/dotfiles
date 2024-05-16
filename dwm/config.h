@@ -74,29 +74,28 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *browsercmd[] = {"firefox", NULL};
 static const char *screenshotcmd[] = {"flameshot", "gui", NULL};
-static const char *brightup[] = {"brightnessctl", "set", "+5%", NULL};
-static const char *brightdown[] = {"brightnessctl", "set", "5%-", NULL};
-static const char *volumeup[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
-                                 "+5%"};
-static const char *volumedown[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
-                                   "-5%"};
-static const char *volumemute[] = {"pactl", "set-sink-mute", "@DEFAULT_SINK@",
-                                   "toggle"};
-static const char *micmute[] = {"pactl", "set-sink-mute", "@DEFAULT_SOURCE@",
-                                "toggle"};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
+    // Launch Apps
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_x, spawn, {.v = browsercmd}},
     {0, XK_Print, spawn, {.v = screenshotcmd}},
-    {0, XF86XK_MonBrightnessUp, spawn, {.v = brightup}},
-    {0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown}},
-    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}},
-    {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}},
-    {0, XF86XK_AudioMute, spawn, {.v = volumemute}},
-    {0, XF86XK_AudioMicMute, spawn, {.v = micmute}},
+
+    // Brightness
+    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set 5%+")},
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%-")},
+
+    // Audio
+    {0, XF86XK_AudioLowerVolume, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%")},
+    {0, XF86XK_AudioRaiseVolume, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
+    {0, XF86XK_AudioMute, spawn,
+     SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+
+    // Window manage
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
