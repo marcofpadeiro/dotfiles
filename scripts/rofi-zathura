@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PDF_DIR="$HOME/uni"
+
+SELECTED_PDF=$(find "$PDF_DIR" -type f -name "*.pdf" | rofi -dmenu -i -p "Select PDF")
+
+if [ -n "$SELECTED_PDF" ]; then
+    zathura "$SELECTED_PDF" &
+fi

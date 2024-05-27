@@ -54,16 +54,16 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY, TAG)                                                      \
-  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
-      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
+    {MODKEY, KEY, view, {.ui = 1 << TAG}},                                     \
+        {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},             \
+        {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                      \
+        {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
+    {                                                                          \
+        .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                   \
+    }
 
 /* commands */
 static char dmenumon[2] =
@@ -94,6 +94,9 @@ static const Key keys[] = {
      SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
     {0, XF86XK_AudioMute, spawn,
      SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+
+    {MODKEY, XK_s, spawn, SHCMD("fzf-zathura")},
+    {MODKEY, XK_e, spawn, SHCMD("rofi-fzf")},
 
     // Window manage
     {MODKEY, XK_b, togglebar, {0}},

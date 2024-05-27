@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+SELECTED_FOLDER=$(find ~ ~/personal ~/uni ~/dotfiles -maxdepth 1 -type d  | rofi -dmenu -i -p "Select Project")
+
+# Extract the session name from the selected folder
+session_name=$(basename "$SELECTED_FOLDER" | tr . _)
+
+# Check if the tmux session exists, if not, create it
+if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -d -s "$session_name" -c "$SELECTED_FOLDER"
+    tmux send-keys -t "$session_name" "nvim" Enter
+    tmux new-window -t "$session_name" -c "$SELECTED_FOLDER" -d
+fi
+
+# If already in a tmux session, switch to the new one
+if [[ -n "${TMUX}" ]]; then
+    tmux switch-client -t "$session_name"
+else
+    alacritty -e tmux attach-session -t "$session_name"
+fi
+
