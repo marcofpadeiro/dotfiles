@@ -12,6 +12,9 @@ stow_stuff() {
     echo 'ZDOTDIR=$HOME/.config/zsh' > ~/.zshenv
     stow zsh
     echo -e "\t$HOME/.config/zsh -> $(pwd)/zsh/.config/zsh"
+
+    stow zathura
+    echo -e "\t$HOME/.config/zathura -> $(pwd)/zsh/.config/zathura"
 }
 
 configure_zsh() {
