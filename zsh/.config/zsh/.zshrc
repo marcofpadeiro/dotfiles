@@ -28,7 +28,6 @@ alias tmuxrc="nvim ~/.config/tmux"
 alias alacrittyrc="nvim ~/.config/alacritty"
 alias dwmrc="nvim ~/.config/dwm/config.h && cd ~/.config/dwm && make PREFIX=$HOME/.local/ clean install && cd -"
 alias ls='ls --color=auto'
-alias vim='nvim'
 
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 

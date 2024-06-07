@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-SELECTED_FOLDER=$(find ~ ~/personal ~/uni ~/dotfiles -maxdepth 1 -type d  | rofi -dmenu -i -p "Select Project")
+SELECTED_FOLDER=$(find ~/personal ~/uni ~/dotfiles -maxdepth 2 -type d  | rofi -dmenu -i -p "Select Project")
 
 # Extract the session name from the selected folder
 session_name=$(basename "$SELECTED_FOLDER" | tr . _)

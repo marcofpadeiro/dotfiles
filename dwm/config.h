@@ -95,7 +95,7 @@ static const Key keys[] = {
     {0, XF86XK_AudioMute, spawn,
      SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
 
-    {MODKEY, XK_s, spawn, SHCMD("fzf-zathura")},
+    {MODKEY, XK_s, spawn, SHCMD("rofi-zathura")},
     {MODKEY, XK_e, spawn, SHCMD("rofi-fzf")},
 
     // Window manage
