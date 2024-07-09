@@ -51,6 +51,7 @@ fi
 # startup programs
 flameshot &
 nm-applet &
+redshift -l 39.5450597:-8.9763512 &
 
 xinput set-prop 10 "libinput Natural Scrolling Enabled" 1 &
 xinput set-prop 10 "libinput Tapping Enabled" 1 &
