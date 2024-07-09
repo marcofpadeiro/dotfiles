@@ -9,15 +9,8 @@ return {
 
         configs.setup({
             ensure_installed = {
-                "c",
                 "lua",
-                "vim",
-                "vimdoc",
-                "javascript",
-                "typescript",
                 "json",
-                "tsx",
-                "css",
                 "rust",
                 "go",
                 "gitignore",
@@ -27,9 +20,6 @@ return {
                 "markdown",
                 "markdown_inline",
                 "toml",
-                "python",
-                "php",
-                "html"
             },
             sync_install = false,
             auto_install = true,
