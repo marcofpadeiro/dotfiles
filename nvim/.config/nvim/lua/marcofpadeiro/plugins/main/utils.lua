@@ -32,6 +32,7 @@ return {
     },
 
     'christoomey/vim-tmux-navigator',
+
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -39,33 +40,6 @@ return {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-    },
-
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
-
-    'github/copilot.vim',
-
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
-
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",  -- required
-            "sindrets/diffview.nvim", -- optional - Diff integration
-
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true
     },
 
     {
@@ -88,17 +62,4 @@ return {
         end,
     },
 
-    {
-        "lervag/vimtex",
-        lazy = false,
-        init = function()
-            vim.g.vimtex_view_method = 'zathura'
-
-            vim.g.vimtex_compiler_method = 'latexmk'
-
-
-            vim.cmd [[filetype plugin indent on]]
-            vim.cmd [[syntax enable]]
-        end
-    }
 }
