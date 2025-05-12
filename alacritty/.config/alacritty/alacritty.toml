@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 
 [bell]
@@ -46,7 +47,7 @@ foreground = "0xabb2bf"
 TERM = "xterm-256color"
 
 [font]
-size = 8
+size = 11
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -77,8 +78,8 @@ mouse = "Middle"
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-program = "/bin/zsh"
+[terminal]
+shell = "/bin/zsh"
 
 [window]
 decorations = "full"

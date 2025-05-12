@@ -1,4 +1,5 @@
 #!/bin/bash
+
 stow_stuff() {
     stow alacritty
     echo -e "\t$HOME/.config/alacritty -> $(pwd)/alacritty/.config/alacritty"
@@ -10,11 +11,20 @@ stow_stuff() {
     echo -e "\t$HOME/.config/tmux -> $(pwd)/tmux/.config/tmux"
 
     echo 'ZDOTDIR=$HOME/.config/zsh' > ~/.zshenv
+
     stow zsh
     echo -e "\t$HOME/.config/zsh -> $(pwd)/zsh/.config/zsh"
 
+    stow sway
+    echo -e "\t$HOME/.config/sway -> $(pwd)/zsh/.config/sway"
+
     stow zathura
     echo -e "\t$HOME/.config/zathura -> $(pwd)/zsh/.config/zathura"
+}
+
+configure_dark_theme() {
+    mkdir -p ~/.config/gtk-3.0
+    echo -e "[Settings]\ngtk-application-prefer-dark-theme=1" > ~/.config/gtk-3.0/settings.ini
 }
 
 configure_zsh() {
@@ -43,24 +53,6 @@ configure_tmux() {
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm > /dev/null 2>&1
 }
 
-configure_dwm() {
-    echo -e "\tCloning..."
-    git clone https://git.suckless.org/dwm ~/.config/dwm
-
-    ln -svf $(pwd)/dwm/config.h $HOME/.config/dwm/config.h
-    ln -svf $(pwd)/dwm/bar.sh $HOME/.config/dwm/bar.sh
-
-    cd $HOME/.config/dwm
-    echo -e "\tAdding patches..."
-    curl https://dwm.suckless.org/patches/systray/dwm-systray-20230922-9f88553.diff -o $HOME/.config/dwm/dwm-systray-20230922-9f88553.diff
-    git apply dwm-systray-20230922-9f88553.diff 
-
-    echo -e "\tCompiling..."
-    make PREFIX=$HOME/.local clean install > /dev/null 2>&1
-
-    cd -
-}
-
 install_fonts() {
     mkdir -p $HOME/.local/share/fonts/ttf
     echo -e "\tCloning Hack Nerd Font..."
@@ -83,6 +75,7 @@ link_tlp() {
 }
 
 link_scripts() {
+    mkdir -p ~/.local/bin
     find $(pwd)/scripts -type f | while IFS= read -r line; do 
         name=$(basename $line | cut -d '.' -f 1)
         ln -sv $line $HOME/.local/bin/$name
@@ -99,14 +92,19 @@ if ask "Stow stuff?"; then
     stow_stuff
 fi
 
+if ask "Configure dark theme?"; then
+    echo ":: Configuring dark theme..."
+    configure_dark_theme
+fi
+
 if ask "Configure zsh?"; then
     echo ":: Configuring zsh..."
     configure_zsh
 fi
 
-if ask "Configure dwm?"; then
-    echo ":: Configuring dwm..."
-    configure_dwm
+if ask "Configure tmux?"; then
+    echo ":: Configuring tmux..."
+    configure_tmux
 fi
 
 if ask "Install fonts?"; then

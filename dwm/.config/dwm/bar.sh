@@ -1,1 +1,0 @@
-/home/marco/dotfiles/dwm/bar.sh
