@@ -103,8 +103,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
 # Layout stuff:
 #
-    bindsym $mod+b splith
+    bindsym $mod+g splith
     bindsym $mod+v splitv
+    bindsym $mod+b exec [ "$(swaymsg -t get_bar_config bar-0 | jq -r ".mode")" = "dock" ] && swaymsg bar mode invisible || swaymsg bar mode dock
 
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
