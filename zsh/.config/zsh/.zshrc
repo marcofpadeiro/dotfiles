@@ -9,6 +9,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 export PROMPT_COMMAND='history -a'
+export EDITOR='nvim'
 
 autoload -U compinit && compinit -u
 
