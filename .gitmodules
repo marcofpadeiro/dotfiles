@@ -1,0 +1,53 @@
+[submodule "nvim/.config/nvim/pack/vendor/start/gruvbox.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/gruvbox.nvim
+	url = https://github.com/ellisonleao/gruvbox.nvim
+	branch = main
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-colorizer.lua"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua
+	branch = master
+[submodule "nvim/.config/nvim/pack/vendor/start/telescope.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+	branch = master
+[submodule "nvim/.config/nvim/pack/vendor/start/plenary.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "nvim/.config/nvim/pack/vendor/start/telescope-fzf-native.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/telescope-fzf-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-neoclip.lua"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-neoclip.lua
+	url = https://github.com/AckslD/nvim-neoclip.lua
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-treesitter"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+	branch = main
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-ts-autotag"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-ts-autotag
+	url = https://github.com/windwp/nvim-ts-autotag
+	branch = main
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-surround"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-surround
+	url = https://github.com/kylechui/nvim-surround
+	branch = main
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-web-devicons"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons
+	branch = master
+[submodule "nvim/.config/nvim/pack/vendor/start/blink.cmp"]
+	path = nvim/.config/nvim/pack/vendor/start/blink.cmp
+	url = https://github.com/Saghen/blink.cmp
+[submodule "nvim/.config/nvim/pack/vendor/opt/markdown-preview.nvim"]
+	path = nvim/.config/nvim/pack/vendor/opt/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim
+[submodule "nvim/.config/nvim/pack/vendor/start/harpoon"]
+	path = nvim/.config/nvim/pack/vendor/start/harpoon
+	url = https://github.com/ThePrimeagen/harpoon.git
+	branch = harpoon2
+[submodule "nvim/.config/nvim/nvim/.config/nvim/pack/vendor/start/oil.nvim"]
+	path = nvim/.config/nvim/nvim/.config/nvim/pack/vendor/start/oil.nvim
+	url = https://github.com/stevearc/oil.nvim
+[submodule "nvim/.config/nvim/pack/vendor/start/oil.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/oil.nvim
+	url = https://github.com/stevearc/oil.nvim

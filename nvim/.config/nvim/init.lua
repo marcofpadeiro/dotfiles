@@ -1,20 +1,21 @@
-require("marcofpadeiro.settings")
-require("marcofpadeiro.keybinds")
+require('theme')
+require('settings')
+require('keymaps')
+require('lsp')
+require('plugins.file_explorer')
+require('plugins.treesitter')
+require('plugins.telescope')
+require('plugins.cmp')
+require('plugins.harpoon')
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
+-- show time it took to load
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local start = vim.loop.hrtime()
+    vim.defer_fn(function()
+      local elapsed_ms = (vim.loop.hrtime() - start) / 1e6
+      print(string.format("Neovim loaded in %.2f ms", elapsed_ms))
+    end, 0)
+  end,
+})
 
-require("lazy").setup("marcofpadeiro.plugins")
-
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])

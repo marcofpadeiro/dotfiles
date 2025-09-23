@@ -50,7 +50,7 @@ fi
 
 # bar
 while true; do
-    /bin/bash $HOME/dotfiles/dwm/bar.sh
+    /bin/bash $HOME/dotfiles/xorg/bar.sh
     sleep 5
 done &
 
