@@ -2,6 +2,8 @@ local ok_t, telescope = pcall(require, 'telescope')
 if not ok_t then return end
 local ok_b, builtin = pcall(require, 'telescope.builtin')
 if not ok_b then return end
+local ok, neoclip = pcall(require, 'neoclip')
+if not ok then return end
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { silent = true })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { silent = true })
@@ -31,6 +33,8 @@ telescope.setup({
         },
     },
 })
+
+neoclip.setup()
 
 pcall(telescope.load_extension, 'fzf')
 pcall(telescope.load_extension, 'neoclip')
