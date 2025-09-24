@@ -2,11 +2,11 @@ local ok, oil = pcall(require, 'oil')
 if not ok then return end
 
 oil.setup({
-    default_file_explorer = true, -- takes over directory buffers (replaces netrw)
-    delete_to_trash = true,     -- needs a system trash utility; set false if you don’t have one
-    columns = { "icon" },       -- add "permissions", "size", "mtime" if you like
+    default_file_explorer = true,
+    delete_to_trash = true,
+    columns = { "icon" },
     view_options = {
-        show_hidden = false,    -- set true if you want dotfiles by default
+        show_hidden = false,
     },
     float = {
         padding = 2,
