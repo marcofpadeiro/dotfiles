@@ -1,5 +1,4 @@
 vim.opt.guicursor = ""        -- block cursor in all modes
-vim.opt.termguicolors = true  -- truecolor support
 vim.opt.wrap = false          -- no soft-wrap
 vim.opt.scrolloff = 8         -- keep 8 lines visible around cursor
 

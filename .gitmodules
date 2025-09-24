@@ -2,10 +2,6 @@
 	path = nvim/.config/nvim/pack/vendor/start/gruvbox.nvim
 	url = https://github.com/ellisonleao/gruvbox.nvim
 	branch = main
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-colorizer.lua"]
-	path = nvim/.config/nvim/pack/vendor/start/nvim-colorizer.lua
-	url = https://github.com/norcalli/nvim-colorizer.lua
-	branch = master
 [submodule "nvim/.config/nvim/pack/vendor/start/telescope.nvim"]
 	path = nvim/.config/nvim/pack/vendor/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim
@@ -69,3 +65,6 @@
 [submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap-virtual-text"]
 	path = nvim/.config/nvim/pack/vendor/start/nvim-dap-virtual-text
 	url = https://github.com/theHamsta/nvim-dap-virtual-text
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-colorizer"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-colorizer
+	url = https://github.com/catgoose/nvim-colorizer.lua
