@@ -1,39 +1,36 @@
-local ok, ts = pcall(require, 'nvim-treesitter.configs')
-if not ok then return end
+local ts = require('nvim-treesitter.configs')
 
 ts.setup({
-    ensure_installed = {},
-    auto_install = true,
+    ensure_installed = {
+        "lua",
+        "json",
+        "rust",
+        "go",
+        "gitignore",
+        "yaml",
+        "java",
+        "bash",
+        "markdown",
+        "markdown_inline",
+        "toml",
+    },
     sync_install = false,
-
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-
+    auto_install = true,
+    highlight = { enable = true },
     indent = { enable = true },
-
-    autotag = { enable = true },
-
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<CR>",
-            node_incremental = "<CR>",
-            node_decremental = "<BS>",
-            scope_incremental = "<TAB>",
-        },
-    },
+    autotag = { enable = true }
 })
 
--- AUTOTAG
-local k, autotag = pcall(require, 'nvim-ts-autotag')
-if not k then return end
+-- auto install on any file type
+local parsers = require('nvim-treesitter.parsers')
+function _G.ensure_treesitter_language_installed()
+    local lang = parsers.get_buf_lang()
+    if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+        vim.schedule_wrap(function()
+            vim.cmd("TSInstallSync " .. lang)
+            vim.cmd [[e!]]
+        end)()
+    end
+end
 
-autotag.setup({
-    opts = {
-        enable_close = true,
-        enable_rename = true,
-        enable_close_on_slash = false
-    }
-})
+vim.cmd [[autocmd FileType * :lua ensure_treesitter_language_installed()]]
