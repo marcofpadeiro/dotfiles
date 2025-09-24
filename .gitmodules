@@ -51,9 +51,9 @@
 [submodule "nvim/.config/nvim/pack/vendor/start/oil.nvim"]
 	path = nvim/.config/nvim/pack/vendor/start/oil.nvim
 	url = https://github.com/stevearc/oil.nvim
-[submodule "nvim/.config/nvim/pack/vendor/opt/copilot.lua"]
-	path = nvim/.config/nvim/pack/vendor/opt/copilot.lua
-	url = https://github.com/zbirenbaum/copilot.lua
 [submodule "nvim/.config/nvim/pack/vendor/opt/vimtex"]
 	path = nvim/.config/nvim/pack/vendor/opt/vimtex
 	url = https://github.com/lervag/vimtex
+[submodule "nvim/.config/nvim/pack/vendor/opt/copilot.lua"]
+	path = nvim/.config/nvim/pack/vendor/opt/copilot.lua
+	url = https://github.com/zbirenbaum/copilot.lua
