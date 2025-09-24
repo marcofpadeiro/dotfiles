@@ -2,9 +2,9 @@ local ok, ts = pcall(require, 'nvim-treesitter.configs')
 if not ok then return end
 
 ts.setup({
-    ensure_installed = {}, -- we’re not auto-managing
-    auto_install = false,  -- no implicit downloads
-    sync_install = false,  -- normal (async) compile is fine
+    ensure_installed = {},
+    auto_install = true,
+    sync_install = false,
 
     highlight = {
         enable = true,
@@ -25,8 +25,6 @@ ts.setup({
         },
     },
 })
-
-local parsers = require('nvim-treesitter.parsers')
 
 -- AUTOTAG
 local k, autotag = pcall(require, 'nvim-ts-autotag')

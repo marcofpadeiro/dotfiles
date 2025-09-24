@@ -1,10 +1,10 @@
 local start = vim.loop.hrtime()
 
-require('theme')
 require('settings')
 require('keymaps')
 require('lsp')
 require('plugins')
+require('appearance')
 
 -- show time it took to load
 vim.api.nvim_create_autocmd("VimEnter", {
