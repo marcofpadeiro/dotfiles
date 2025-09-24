@@ -1,73 +1,70 @@
-[submodule "nvim/.config/nvim/pack/vendor/start/gruvbox.nvim"]
+[submodule "nvim/pack/vendor/start/gruvbox.nvim"]
 	path = nvim/pack/vendor/start/gruvbox.nvim
 	url = https://github.com/ellisonleao/gruvbox.nvim
 	branch = main
-[submodule "nvim/.config/nvim/pack/vendor/start/telescope.nvim"]
+[submodule "nvim/pack/vendor/start/telescope.nvim"]
 	path = nvim/pack/vendor/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim
 	branch = master
-[submodule "nvim/.config/nvim/pack/vendor/start/plenary.nvim"]
+[submodule "nvim/pack/vendor/start/plenary.nvim"]
 	path = nvim/pack/vendor/start/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
-[submodule "nvim/.config/nvim/pack/vendor/start/telescope-fzf-native.nvim"]
+[submodule "nvim/pack/vendor/start/telescope-fzf-native.nvim"]
 	path = nvim/pack/vendor/start/telescope-fzf-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-neoclip.lua"]
+[submodule "nvim/pack/vendor/start/nvim-neoclip.lua"]
 	path = nvim/pack/vendor/start/nvim-neoclip.lua
 	url = https://github.com/AckslD/nvim-neoclip.lua
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-treesitter"]
+[submodule "nvim/pack/vendor/start/nvim-treesitter"]
 	path = nvim/pack/vendor/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 	branch = master
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-ts-autotag"]
+[submodule "nvim/pack/vendor/start/nvim-ts-autotag"]
 	path = nvim/pack/vendor/start/nvim-ts-autotag
 	url = https://github.com/windwp/nvim-ts-autotag
 	branch = main
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-surround"]
+[submodule "nvim/pack/vendor/start/nvim-surround"]
 	path = nvim/pack/vendor/start/nvim-surround
 	url = https://github.com/kylechui/nvim-surround
 	branch = main
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-web-devicons"]
+[submodule "nvim/pack/vendor/start/nvim-web-devicons"]
 	path = nvim/pack/vendor/start/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons
 	branch = master
-[submodule "nvim/.config/nvim/pack/vendor/start/blink.cmp"]
+[submodule "nvim/pack/vendor/start/blink.cmp"]
 	path = nvim/pack/vendor/start/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
-[submodule "nvim/.config/nvim/pack/vendor/opt/markdown-preview.nvim"]
+[submodule "nvim/pack/vendor/opt/markdown-preview.nvim"]
 	path = nvim/pack/vendor/opt/markdown-preview.nvim
 	url = https://github.com/iamcco/markdown-preview.nvim
-[submodule "nvim/.config/nvim/pack/vendor/start/harpoon"]
+[submodule "nvim/pack/vendor/start/harpoon"]
 	path = nvim/pack/vendor/start/harpoon
 	url = https://github.com/ThePrimeagen/harpoon.git
 	branch = harpoon2
-[submodule "nvim/.config/nvim/.config/nvim/pack/vendor/start/oil.nvim"]
-	path = nvim/.config/nvim/.config/nvim/pack/vendor/start/oil.nvim
-	url = https://github.com/stevearc/oil.nvim
-[submodule "nvim/.config/nvim/pack/vendor/start/oil.nvim"]
+[submodule "nvim/pack/vendor/start/oil.nvim"]
 	path = nvim/pack/vendor/start/oil.nvim
 	url = https://github.com/stevearc/oil.nvim
-[submodule "nvim/.config/nvim/pack/vendor/opt/vimtex"]
+[submodule "nvim/pack/vendor/opt/vimtex"]
 	path = nvim/pack/vendor/opt/vimtex
 	url = https://github.com/lervag/vimtex
-[submodule "nvim/.config/nvim/pack/vendor/opt/copilot.lua"]
+[submodule "nvim/pack/vendor/opt/copilot.lua"]
 	path = nvim/pack/vendor/opt/copilot.lua
 	url = https://github.com/zbirenbaum/copilot.lua
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap"]
+[submodule "nvim/pack/vendor/start/nvim-dap"]
 	path = nvim/pack/vendor/start/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap-ui"]
+[submodule "nvim/pack/vendor/start/nvim-dap-ui"]
 	path = nvim/pack/vendor/start/nvim-dap-ui
 	url = https://github.com/rcarriga/nvim-dap-ui
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-nio"]
+[submodule "nvim/pack/vendor/start/nvim-nio"]
 	path = nvim/pack/vendor/start/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap-virtual-text"]
+[submodule "nvim/pack/vendor/start/nvim-dap-virtual-text"]
 	path = nvim/pack/vendor/start/nvim-dap-virtual-text
 	url = https://github.com/theHamsta/nvim-dap-virtual-text
-[submodule "nvim/.config/nvim/pack/vendor/start/nvim-colorizer"]
+[submodule "nvim/pack/vendor/start/nvim-colorizer"]
 	path = nvim/pack/vendor/start/nvim-colorizer
 	url = https://github.com/catgoose/nvim-colorizer.lua
-[submodule "nvim/.config/nvim/pack/vendor/start/gitsigns.nvim"]
+[submodule "nvim/pack/vendor/start/gitsigns.nvim"]
 	path = nvim/pack/vendor/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
