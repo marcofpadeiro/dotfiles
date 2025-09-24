@@ -57,3 +57,15 @@
 [submodule "nvim/.config/nvim/pack/vendor/opt/copilot.lua"]
 	path = nvim/.config/nvim/pack/vendor/opt/copilot.lua
 	url = https://github.com/zbirenbaum/copilot.lua
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap-ui"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-nio"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio
+[submodule "nvim/.config/nvim/pack/vendor/start/nvim-dap-virtual-text"]
+	path = nvim/.config/nvim/pack/vendor/start/nvim-dap-virtual-text
+	url = https://github.com/theHamsta/nvim-dap-virtual-text
