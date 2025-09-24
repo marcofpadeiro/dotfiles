@@ -68,3 +68,6 @@
 [submodule "nvim/.config/nvim/pack/vendor/start/nvim-colorizer"]
 	path = nvim/.config/nvim/pack/vendor/start/nvim-colorizer
 	url = https://github.com/catgoose/nvim-colorizer.lua
+[submodule "nvim/.config/nvim/pack/vendor/start/gitsigns.nvim"]
+	path = nvim/.config/nvim/pack/vendor/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim
