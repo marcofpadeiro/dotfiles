@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PDF_DIR="$HOME/uni"
+PDF_DIR="$HOME/uni $HOME/Downloads"
 
 SELECTED_PDF=$(find "$PDF_DIR" -type f -name "*.pdf" | rofi -dmenu -i -p "Select PDF")
 

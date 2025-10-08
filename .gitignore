@@ -1,8 +1,7 @@
-nvim/.config/nvim/lazy-lock.json
-dwm/.config/dwm/*
-!dwm/.config/dwm/config.h
-!dwm/.config/dwm/bar.sh
-tmux/.config/tmux/plugins
-zsh/.config/zsh/plugins
-zsh/.config/zsh/themes
-zsh/.config/zsh/.zcompdump
+dwm/dwm/*
+!dwm/dwm/config.h
+!dwm/dwm/bar.sh
+tmux/plugins
+zsh/plugins
+zsh/themes
+zsh/.zcompdump
