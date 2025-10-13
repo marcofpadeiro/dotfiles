@@ -68,3 +68,6 @@
 [submodule "nvim/pack/vendor/start/gitsigns.nvim"]
 	path = nvim/pack/vendor/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "nvim/pack/vendor/start/nvim-jdtls"]
+	path = nvim/pack/vendor/start/nvim-jdtls
+	url = https://codeberg.org/mfussenegger/nvim-jdtls
