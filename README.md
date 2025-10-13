@@ -9,4 +9,4 @@ Currently it's optimized to run on Arch linux but any distro should work with so
 >- Window manager: dwm
 >- Terminal emulator: Alacritty
 >- Shell: zsh
->- Colorscheme: Tokyo Night
+>- Colorscheme: Gruvbox
