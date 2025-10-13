@@ -71,3 +71,15 @@
 [submodule "nvim/pack/vendor/start/nvim-jdtls"]
 	path = nvim/pack/vendor/start/nvim-jdtls
 	url = https://codeberg.org/mfussenegger/nvim-jdtls
+[submodule "mybar"]
+	path = mybar
+	url = https://github.com/marcofpadeiro/mybar
+[submodule "suckless/dwm"]
+	path = suckless/dwm
+	url = https://git.suckless.org/dwm
+[submodule "suckless/dmenu"]
+	path = suckless/dmenu
+	url = https://git.suckless.org/dmenu
+[submodule "suckless/slock"]
+	path = suckless/slock
+	url = https://git.suckless.org/slock
