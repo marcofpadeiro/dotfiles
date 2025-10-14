@@ -16,23 +16,23 @@ local ok_a, actions = pcall(require, 'telescope.actions')
 if not ok_a then actions = {} end
 
 telescope.setup({
-    defaults = {
-        mappings = {
-            i = {
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
-            },
-        },
-        file_ignore_patterns = { "node_modules/.*", "pack/.*", "%.git/.*" }
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
+      },
     },
-    extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = 'smart_case',
-        },
+    file_ignore_patterns = { "node_modules/.*", "pack/.*", "%.git/.*" }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = 'smart_case',
     },
+  },
 })
 
 neoclip.setup()

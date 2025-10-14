@@ -1,71 +1,81 @@
----@brief
-
----@type vim.lsp.Config
 local M = {}
 
-local jdtls_root = vim.fn.expand("/usr/share/java/jdtls")
-local jdtls_config = jdtls_root .. "/config_linux"
+function M.setup()
+  local ok, jdtls = pcall(require, "jdtls")
+  if not ok then
+    vim.notify("nvim-jdtls not installed: " .. tostring(jdtls), vim.log.levels.ERROR)
+    return
+  end
 
-local lombok = jdtls_root .. "/lombok.jar"
-local lombok_agent = vim.fn.filereadable(lombok) == 1 and ("-javaagent:" .. lombok) or nil
+  local project_name  = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+  local workspace_dir = vim.fn.stdpath("data") .. "/jdtls_workspaces/" .. project_name
 
-local launcher = vim.fn.glob(jdtls_root .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+  local mason_pkg     = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
+  local sys           = vim.uv.os_uname().sysname
+  local config        = mason_pkg .. (sys == "Darwin" and "/config_mac"
+    or sys:match("Windows") and "/config_win"
+    or "/config_linux")
 
-local function workspace_dir()
-    local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-    return vim.fn.expand("~/.local/share/jdtls-workspaces/") .. name
-end
+  local launcher      = vim.fn.glob(mason_pkg .. "/plugins/org.eclipse.equinox.launcher_*.jar", 1)
+  if launcher == "" then
+    vim.notify("JDTLS launcher jar not found in " .. mason_pkg .. "/plugins", vim.log.levels.ERROR)
+    return
+  end
 
-local cmd = {
-    "java",
+  local lombok_path = vim.fn.expand("~/.local/share/nvim/lombok.jar")
+  local has_lombok = vim.fn.filereadable(lombok_path) == 1
+
+  local java = (os.getenv("JAVA_HOME") and (os.getenv("JAVA_HOME") .. "/bin/java")) or "java"
+
+  local cmd = {
+    java,
+    has_lombok and ("-javaagent:" .. lombok_path) or nil,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
     "-Xms1g",
-    "-Xmx4g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
     "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-}
+    "-jar", launcher,
+    "-configuration", config,
+    "-data", workspace_dir,
+  }
 
-if lombok_agent then
-    table.insert(cmd, 1, lombok_agent)
-end
+  local filtered = {}
+  for _, v in ipairs(cmd) do if v ~= nil then table.insert(filtered, v) end end
+  cmd = filtered
 
-table.insert(cmd, "-jar")
-table.insert(cmd, launcher)
-table.insert(cmd, "-configuration")
-table.insert(cmd, jdtls_config)
-table.insert(cmd, "-data")
-table.insert(cmd, workspace_dir())
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-M.cmd = cmd
-M.filetypes = { "java" }
-M.root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+  local on_attach = function(_, bufnr)
+    local function map(k, fn, d) vim.keymap.set("n", k, fn, { buffer = bufnr, desc = "JDTLS: " .. d }) end
+    map("<leader>oi", jdtls.organize_imports, "Organize Imports")
+    map("<leader>tc", jdtls.test_class, "Run Test Class")
+    map("<leader>tm", jdtls.test_nearest_method, "Run Test Method")
+    map("<leader>ev", jdtls.extract_variable, "Extract Variable")
+    map("<leader>ec", jdtls.extract_constant, "Extract Constant")
+    map("<leader>em", jdtls.extract_method, "Extract Method")
+  end
 
-M.settings = {
-    java = {
-        signatureHelp = { enabled = true },
-        completion = {
-            favoriteStaticMembers = {
-                "org.junit.Assert.*",
-                "org.mockito.Mockito.*",
-                "org.mockito.ArgumentMatchers.*",
-                "org.mockito.Answers.*",
-            },
-            importOrder = { "java", "javax", "com", "org" },
-            guessMethodArguments = true,
-        },
-        sources = { organizeImports = { starThreshold = 999, staticStarThreshold = 999 } },
-        format = {
-            enabled = true,
-        },
-        references = { includeDecompiledSources = true },
+  jdtls.start_or_attach({
+    cmd = cmd,
+    root_dir = require("jdtls.setup").find_root({ "pom.xml", "gradlew", "mvnw", ".git" }),
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+      java = {
+        configuration = { updateBuildConfiguration = "interactive" },
+        maven = { downloadSources = true },
+        implementationsCodeLens = { enabled = true },
+        referencesCodeLens = { enabled = true },
+        format = { enabled = true },
+      },
     },
-}
-
-M.init_options = { bundles = {} }
+    init_options = { bundles = {} },
+  })
+end
 
 return M
