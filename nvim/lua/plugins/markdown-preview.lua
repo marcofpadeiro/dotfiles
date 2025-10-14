@@ -1,25 +1,25 @@
 local function load()
-    vim.cmd('packadd markdown-preview.nvim')
+  vim.cmd('packadd markdown-preview.nvim')
 end
 
 vim.api.nvim_create_user_command('MarkdownPreview', function()
-    load()
-    vim.cmd('MarkdownPreview')
+  load()
+  vim.cmd('MarkdownPreview')
 end, {})
 
 vim.api.nvim_create_user_command('MarkdownPreviewStop', function()
-    load()
-    vim.cmd('MarkdownPreviewStop')
+  load()
+  vim.cmd('MarkdownPreviewStop')
 end, {})
 
 vim.api.nvim_create_user_command('MarkdownPreviewToggle', function()
-    load()
-    vim.cmd('MarkdownPreviewToggle')
+  load()
+  vim.cmd('MarkdownPreviewToggle')
 end, {})
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'markdown',
-    callback = function()
-        load()
-    end,
+  pattern = 'markdown',
+  callback = function()
+    load()
+  end,
 })

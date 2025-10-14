@@ -31,17 +31,17 @@ vim.g.maplocalleader = ","
 
 -- 2 spaces for web stuff
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascript", "typescript", "json", "yaml", "html", "css" },
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-    end,
+  pattern = { "javascript", "typescript", "lua", "vue", "json", "yaml", "html", "css" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
 })
 
 -- no comment on newline
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    callback = function()
-        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-    end,
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+  end,
 })

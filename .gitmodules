@@ -68,3 +68,12 @@
 [submodule "nvim/pack/vendor/start/gitsigns.nvim"]
 	path = nvim/pack/vendor/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "nvim/pack/vendor/start/mason.nvim"]
+	path = nvim/pack/vendor/start/mason.nvim
+	url = https://github.com/mason-org/mason.nvim
+[submodule "nvim/pack/vendor/start/mason-lspconfig.nvim"]
+	path = nvim/pack/vendor/start/mason-lspconfig.nvim
+	url = https://github.com/mason-org/mason-lspconfig.nvim
+[submodule "nvim/pack/vendor/start/nvim-lspconfig"]
+	path = nvim/pack/vendor/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
