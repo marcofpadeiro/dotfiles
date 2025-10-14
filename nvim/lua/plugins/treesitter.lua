@@ -22,7 +22,7 @@ ts.setup({
 })
 
 local parsers = require('nvim-treesitter.parsers')
-function G.ensure_treesitter_language_installed()
+function _G.ensure_treesitter_language_installed()
   local lang = parsers.get_buf_lang()
   if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
     vim.schedule_wrap(function()
