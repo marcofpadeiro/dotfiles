@@ -68,9 +68,6 @@
 [submodule "nvim/pack/vendor/start/gitsigns.nvim"]
 	path = nvim/pack/vendor/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
-[submodule "nvim/pack/vendor/start/nvim-jdtls"]
-	path = nvim/pack/vendor/start/nvim-jdtls
-	url = https://codeberg.org/mfussenegger/nvim-jdtls
 [submodule "suckless/dwm"]
 	path = suckless/dwm
 	url = https://git.suckless.org/dwm
@@ -89,3 +86,6 @@
 [submodule "mybar"]
 	path = mybar
 	url = git@github.com:marcofpadeiro/mybar.git
+[submodule "nvim/pack/vendor/start/nvim-lspconfig"]
+	path = nvim/pack/vendor/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig

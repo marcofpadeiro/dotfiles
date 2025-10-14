@@ -11,7 +11,6 @@ vim.keymap.set('n', '<leader><leader>', builtin.buffers, { silent = true })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
 vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<CR>', { silent = true })
 
--- Actions for insert-mode navigation
 local ok_a, actions = pcall(require, 'telescope.actions')
 if not ok_a then actions = {} end
 

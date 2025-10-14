@@ -1,6 +1,5 @@
 require('settings')
 require('keymaps')
-require('lsp')
 require('daps')
 require('plugins')
 require('appearance')
