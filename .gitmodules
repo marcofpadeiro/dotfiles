@@ -71,9 +71,6 @@
 [submodule "nvim/pack/vendor/start/nvim-jdtls"]
 	path = nvim/pack/vendor/start/nvim-jdtls
 	url = https://codeberg.org/mfussenegger/nvim-jdtls
-[submodule "mybar"]
-	path = mybar
-	url = https://github.com/marcofpadeiro/mybar
 [submodule "suckless/dwm"]
 	path = suckless/dwm
 	url = https://git.suckless.org/dwm
@@ -83,3 +80,12 @@
 [submodule "suckless/slock"]
 	path = suckless/slock
 	url = https://git.suckless.org/slock
+[submodule "nvim/pack/vendor/start/mason.nvim"]
+	path = nvim/pack/vendor/start/mason.nvim
+	url = https://github.com/mason-org/mason.nvim
+[submodule "nvim/pack/vendor/start/mason-lspconfig.nvim"]
+	path = nvim/pack/vendor/start/mason-lspconfig.nvim
+	url = https://github.com/mason-org/mason-lspconfig.nvim
+[submodule "mybar"]
+	path = mybar
+	url = git@github.com:marcofpadeiro/mybar.git

@@ -1,5 +1,3 @@
-local start = vim.loop.hrtime()
-
 require('settings')
 require('keymaps')
 require('lsp')
