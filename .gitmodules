@@ -68,24 +68,21 @@
 [submodule "nvim/pack/vendor/start/gitsigns.nvim"]
 	path = nvim/pack/vendor/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
-[submodule "suckless/dwm"]
-	path = suckless/dwm
-	url = https://git.suckless.org/dwm
-[submodule "suckless/dmenu"]
-	path = suckless/dmenu
-	url = https://git.suckless.org/dmenu
-[submodule "suckless/slock"]
-	path = suckless/slock
-	url = https://git.suckless.org/slock
 [submodule "nvim/pack/vendor/start/mason.nvim"]
 	path = nvim/pack/vendor/start/mason.nvim
 	url = https://github.com/mason-org/mason.nvim
 [submodule "nvim/pack/vendor/start/mason-lspconfig.nvim"]
 	path = nvim/pack/vendor/start/mason-lspconfig.nvim
 	url = https://github.com/mason-org/mason-lspconfig.nvim
-[submodule "mybar"]
-	path = mybar
-	url = git@github.com:marcofpadeiro/mybar.git
 [submodule "nvim/pack/vendor/start/nvim-lspconfig"]
 	path = nvim/pack/vendor/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
+[submodule "rofi/bluetooth"]
+	path = rofi/bluetooth
+	url = https://github.com/nickclyde/rofi-bluetooth
+[submodule "rofi/network-manager"]
+	path = rofi/network-manager
+	url = https://github.com/meowrch/rofi-network-manager
+[submodule "rofi/wofi-emoji"]
+	path = rofi/wofi-emoji
+	url = https://github.com/dln/wofi-emoji
