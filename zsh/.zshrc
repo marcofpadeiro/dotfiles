@@ -16,7 +16,9 @@ export EDITOR=nvim
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
-export PATH=$HOME/.local/bin:$PATH # path
+
+# path
+export PATH=$HOME/.local/bin:$HOME/dotfiles/scripts:$PATH 
 
 setopt hist_ignore_dups
 setopt share_history
@@ -34,6 +36,9 @@ fi
 
 # autocomplete
 autoload -Uz compinit && compinit
+
+# jata stuff
+eval "$(direnv hook zsh)"
 
 # plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

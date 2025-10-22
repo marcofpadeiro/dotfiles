@@ -86,3 +86,6 @@
 [submodule "rofi/wofi-emoji"]
 	path = rofi/wofi-emoji
 	url = https://github.com/dln/wofi-emoji
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
