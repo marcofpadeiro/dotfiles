@@ -14,10 +14,8 @@ use_find() {
 # usage: directories first, then depth
 depth1=$(use_find "$HOME/personal" "$HOME/dotfiles" 1)
 depth2=$(use_find "$HOME/uni" 2)
-echo "$depth1"
-echo "$depth2"
 
-session=$(echo -e "$depth1\n$depth2\n$HOME/dotfiles" | fzf)
+session=$(echo -e "$depth1\n$depth2\n$HOME/dotfiles\n$HOME/Documents/notes" | fzf)
 session_name=$(basename "$session" | tr . _)
 
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
