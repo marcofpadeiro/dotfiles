@@ -65,7 +65,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     keymap("K", vim.lsp.buf.hover, "Hover Documentation")
-    keymap("gd", vim.lsp.buf.definition, "Goto definition")
     keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
     keymap("<leader>rn", vim.lsp.buf.rename, "Rename all references")
     keymap("<leader>t", vim.diagnostic.open_float, "Open Diagnostic Float")
