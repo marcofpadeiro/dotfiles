@@ -26,10 +26,14 @@ setopt correct
 
 # prompt
 ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_AUTOSUGGESTIONS_PATH="/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_SYNTAXHIGHLIGHTING_PATH="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+ZSH_POWERLEVEL10K_PATH="/usr/share/zsh-theme-powerlevel10k"
 
-if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
-  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f "$ZSH_POWERLEVEL10K_PATH/powerlevel10k.zsh-theme" ]]; then
+  source "$ZSH_POWERLEVEL10K_PATH/powerlevel10k.zsh-theme"
 else
+
   autoload -Uz promptinit; promptinit
   prompt adam1
 fi
@@ -37,11 +41,10 @@ fi
 # autocomplete
 autoload -Uz compinit && compinit
 
-# jata stuff
-eval "$(direnv hook zsh)"
+# java stuff
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f "$ZSH_SYNTAXHIGHLIGHTING_PATH" ]] || source "$ZSH_SYNTAXHIGHLIGHTING_PATH"
+[[ ! -f "$ZSH_AUTOSUGGESTIONS_PATH" ]] || source "$ZSH_AUTOSUGGESTIONS_PATH"
+source "$ZSH_POWERLEVEL10K_PATH/config/p10k-robbyrussell.zsh"
