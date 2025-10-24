@@ -23,9 +23,11 @@ blink_cmp.setup({
 })
 
 -- mason
-require("mason").setup()
+local mason = require("mason") 
+mason.setup()
 
-require("mason-lspconfig").setup({
+local mlspconfig = require("mason-lspconfig")
+mlspconfig.setup({
   ensure_installed = {
     "lua_ls",
     "pyright",
@@ -33,7 +35,6 @@ require("mason-lspconfig").setup({
     "clangd",
     "gopls",
     "jsonls",
-    "jdtls",
     "marksman",
     "rust_analyzer",
     "taplo",
@@ -44,8 +45,7 @@ require("mason-lspconfig").setup({
 })
 
 -- enable servers
-local lspconfig = require("mason-lspconfig")
-for _, server_name in ipairs(lspconfig.get_installed_servers()) do
+for _, server_name in ipairs(mlspconfig.get_installed_servers()) do
   vim.lsp.enable(server_name)
 end
 
