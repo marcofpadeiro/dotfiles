@@ -23,7 +23,7 @@ blink_cmp.setup({
 })
 
 -- mason
-local mason = require("mason") 
+local mason = require("mason")
 mason.setup()
 
 local mlspconfig = require("mason-lspconfig")

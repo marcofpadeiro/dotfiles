@@ -7,7 +7,6 @@ autoload -U colors && colors
 
 # aliases
 alias ls='lsd'
-alias cat='bat'
 alias grep='grep --color=auto'
 alias gst='git status'
 
@@ -42,9 +41,9 @@ fi
 autoload -Uz compinit && compinit
 
 # java stuff
-command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+# command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # plugins
 [[ ! -f "$ZSH_SYNTAXHIGHLIGHTING_PATH" ]] || source "$ZSH_SYNTAXHIGHLIGHTING_PATH"
 [[ ! -f "$ZSH_AUTOSUGGESTIONS_PATH" ]] || source "$ZSH_AUTOSUGGESTIONS_PATH"
-source "$ZSH_POWERLEVEL10K_PATH/config/p10k-robbyrussell.zsh"
+[[ ! -f "$ZSH_POWERLEVEL10K_PATH/config/p10k-robbyrussell.zsh" ]] || source "$ZSH_POWERLEVEL10K_PATH/config/p10k-robbyrussell.zsh"

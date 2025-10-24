@@ -92,3 +92,6 @@
 [submodule "nvim/pack/vendor/start/obsidian.nvim"]
 	path = nvim/pack/vendor/start/obsidian.nvim
 	url = https://github.com/epwalsh/obsidian.nvim
+[submodule "nvim/pack/vendor/start/nvim-jdtls"]
+	path = nvim/pack/vendor/start/nvim-jdtls
+	url = https://github.com/mfussenegger/nvim-jdtls
