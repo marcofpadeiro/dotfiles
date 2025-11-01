@@ -49,14 +49,6 @@ for _, server_name in ipairs(mlspconfig.get_installed_servers()) do
   vim.lsp.enable(server_name)
 end
 
-vim.lsp.config("ts_ls", {
-  filetypes = {
-    "javascript", "javascriptreact", "javascript.jsx",
-    "typescript", "typescriptreact", "typescript.tsx",
-    "vue",
-  },
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
@@ -72,7 +64,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- latex
+-- lazyload latex
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "tex",
   callback = function()

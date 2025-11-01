@@ -2,7 +2,11 @@ local plugin_path = vim.fn.stdpath("data") .. "/mason/packages/vue-language-serv
 
 return {
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-
+  filetypes = {
+    "javascript", "javascriptreact", "javascript.jsx",
+    "typescript", "typescriptreact", "typescript.tsx",
+    "vue",
+  },
   init_options = {
     hostInfo = "neovim",
     plugins = {

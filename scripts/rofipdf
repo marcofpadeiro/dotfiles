@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PDF_DIR="$HOME/uni $HOME/Downloads"
+PDF_DIR="$HOME/uni/sources"
 
 SELECTED_PDF=$(find "$PDF_DIR" -type f -name "*.pdf" | rofi -dmenu -i -p "Select PDF")
 
 if [ -n "$SELECTED_PDF" ]; then
-    zathura "$SELECTED_PDF" &
+    okular "$SELECTED_PDF" &
 fi
