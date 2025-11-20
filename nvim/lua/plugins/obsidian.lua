@@ -15,9 +15,9 @@ if cwd:find(vault_path, 1, true) then
   vim.keymap.set("n", "<leader>t", "<cmd>ObsidianNewFromTemplate<CR>", { desc = "New from template" })
 
 
-  vim.keymap.set("n", "gd", function()
-    vim.cmd("ObsidianFollowLink")
-  end, { desc = "Follow Obsidian link" })
+  -- vim.keymap.set("n", "gd", function()
+  --   vim.cmd("ObsidianFollowLink")
+  -- end, { desc = "Follow Obsidian link" })
 
   obsidian.setup({
     workspaces = {
