@@ -29,6 +29,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+vim.opt.laststatus = 0
+vim.opt.ruler = true
 
 local languagesDiffIndent = { "javascript", "typescript", "json", "yaml", "html", "css", "lua", "vue", "cucumber" }
 
