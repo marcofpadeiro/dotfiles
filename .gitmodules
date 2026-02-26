@@ -95,3 +95,6 @@
 [submodule "nvim/pack/vendor/start/nvim-jdtls"]
 	path = nvim/pack/vendor/start/nvim-jdtls
 	url = https://github.com/mfussenegger/nvim-jdtls
+[submodule "nvim/pack/vendor/start/kanagawa.nvim"]
+	path = nvim/pack/vendor/start/kanagawa.nvim
+	url = https://github.com/rebelot/kanagawa.nvim

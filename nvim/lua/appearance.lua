@@ -48,4 +48,4 @@ colorizer.setup({
 -- theme
 vim.o.background = "dark"
 vim.opt.termguicolors = true -- truecolor support
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("kanagawa")
