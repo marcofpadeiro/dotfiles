@@ -5,11 +5,11 @@ if not ok_b then return end
 local ok, neoclip = pcall(require, 'neoclip')
 if not ok then return end
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { silent = true })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { silent = true })
+vim.keymap.set('n', '<leader>tt', builtin.find_files, { silent = true })
+vim.keymap.set('n', '<leader>tg', builtin.live_grep, { silent = true })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { silent = true })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
-vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<CR>', { silent = true })
+vim.keymap.set('n', '<leader>th', builtin.help_tags, { silent = true })
+vim.keymap.set('n', '<leader>ty', '<cmd>Telescope neoclip<CR>', { silent = true })
 
 local ok_a, actions = pcall(require, 'telescope.actions')
 if not ok_a then actions = {} end

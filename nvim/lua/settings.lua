@@ -32,7 +32,7 @@ vim.g.maplocalleader = ","
 vim.opt.laststatus = 0
 vim.opt.ruler = true
 
-local languagesDiffIndent = { "javascript", "typescript", "json", "yaml", "html", "css", "lua", "vue", "cucumber" }
+local languagesDiffIndent = { "javascript", "typescript", "typescriptreact", "json", "yaml", "html", "css", "lua", "vue", "cucumber" }
 
 -- 2 spaces for web stuff
 vim.api.nvim_create_autocmd("FileType", {
