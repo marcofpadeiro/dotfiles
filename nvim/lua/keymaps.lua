@@ -16,8 +16,6 @@ vim.keymap.set('v', "<leader>y", "\"+y")
 vim.keymap.set('n', "<leader>Y", "\"+Y")
 vim.keymap.set('v', "<leader>p", "\"_dP")
 
-vim.keymap.set('v', "<leader>e", ":Oil")
-
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })

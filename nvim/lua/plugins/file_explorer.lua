@@ -23,6 +23,4 @@ oil.setup({
   },
 })
 
--- Quick access mappings (assuming you set mapleader EARLY in init.lua)
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Oil: open parent directory' })
-vim.keymap.set('n', '<leader>e', function() oil.open_float() end, { desc = 'Oil: open CWD' })
