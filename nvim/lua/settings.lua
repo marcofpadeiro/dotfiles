@@ -31,6 +31,7 @@ vim.g.maplocalleader = ","
 
 vim.opt.laststatus = 0
 vim.opt.ruler = true
+vim.opt.winbar = "%f"
 
 local languagesDiffIndent = { "javascript", "typescript", "typescriptreact", "json", "yaml", "html", "css", "lua", "vue", "cucumber" }
 
