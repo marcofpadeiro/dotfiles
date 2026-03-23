@@ -112,3 +112,15 @@
 [submodule "nvim/pack/vendor/start/ltex-ls.nvim"]
 	path = nvim/pack/vendor/start/ltex-ls.nvim
 	url = https://github.com/vigoux/ltex-ls.nvim
+[submodule "nvim/pack/vendor/start/CamelCaseMotion"]
+	path = nvim/pack/vendor/start/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion
+[submodule "nvim/pack/vendor/start/nvim-java-refactor"]
+	path = nvim/pack/vendor/start/nvim-java-refactor
+	url = https://github.com/nvim-java/nvim-java-refactor
+[submodule "nvim/pack/vendor/start/java-deps.nvim"]
+	path = nvim/pack/vendor/start/java-deps.nvim
+	url = https://github.com/JavaHello/java-deps.nvim
+[submodule "nvim/pack/vendor/start/lua-async.git"]
+	path = nvim/pack/vendor/start/lua-async.git
+	url = https://github.com/nvim-java/lua-async.git

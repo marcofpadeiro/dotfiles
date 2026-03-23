@@ -47,7 +47,7 @@ mlspconfig.setup({
   automatic_installation = true,
 })
 
--- vim.lsp.enable('jdtls')
+vim.lsp.enable('jdtls')
 -- enable servers
 for _, server_name in ipairs(mlspconfig.get_installed_servers()) do
   vim.lsp.enable(server_name)

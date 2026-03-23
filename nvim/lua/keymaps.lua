@@ -1,6 +1,6 @@
 vim.keymap.set('n', '<leader>x', ':!chmod +x %<CR>')
 
-vim.keymap.set('n', '<C-e>', ':!tmux new-window fzf-tmux<CR><CR>')
+vim.keymap.set('n', '<C-e>', ':!tmux new-window fzf-tmux.sh<CR><CR>')
 
 -- Fast saving
 vim.keymap.set('n', "<leader>w", "<cmd>:lua vim.lsp.buf.format()<CR><cmd>:w<CR>")
@@ -26,3 +26,8 @@ vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { silent = true })
 vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], { silent = true })
 vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], { silent = true })
 vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { silent = true })
+
+-- Camel Case motions
+vim.keymap.set({'n', 'o', 'x'}, 'w', '<Plug>CamelCaseMotion_w', {})
+vim.keymap.set({'n', 'o', 'x'}, 'b', '<Plug>CamelCaseMotion_b', {})
+vim.keymap.set({'n', 'o', 'x'}, 'e', '<Plug>CamelCaseMotion_e', {})
