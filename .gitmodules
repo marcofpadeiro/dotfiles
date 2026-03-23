@@ -31,7 +31,7 @@
 	path = nvim/pack/vendor/start/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
 [submodule "nvim/pack/vendor/opt/markdown-preview.nvim"]
-	path = nvim/pack/vendor/opt/markdown-preview.nvim
+	path = nvim/pack/vendor/start/markdown-preview.nvim
 	url = https://github.com/iamcco/markdown-preview.nvim
 [submodule "nvim/pack/vendor/start/harpoon"]
 	path = nvim/pack/vendor/start/harpoon
@@ -41,7 +41,7 @@
 	path = nvim/pack/vendor/start/oil.nvim
 	url = https://github.com/stevearc/oil.nvim
 [submodule "nvim/pack/vendor/opt/vimtex"]
-	path = nvim/pack/vendor/opt/vimtex
+	path = nvim/pack/vendor/start/vimtex
 	url = https://github.com/lervag/vimtex
 [submodule "nvim/pack/vendor/opt/copilot.lua"]
 	path = nvim/pack/vendor/opt/copilot.lua
@@ -91,3 +91,24 @@
 [submodule "nvim/pack/vendor/start/kanagawa.nvim"]
 	path = nvim/pack/vendor/start/kanagawa.nvim
 	url = https://github.com/rebelot/kanagawa.nvim
+[submodule "nvim/pack/vendor/start/nvim-java"]
+	path = nvim/pack/vendor/start/nvim-java
+	url = https://github.com/nvim-java/nvim-java.git
+[submodule "nvim/pack/vendor/start/lua-utils.nvim"]
+	path = nvim/pack/vendor/start/lua-utils.nvim
+	url = https://github.com/nvim-neorg/lua-utils.nvim.git
+[submodule "nvim/pack/vendor/start/nvim-java-core"]
+	path = nvim/pack/vendor/start/nvim-java-core
+	url = https://github.com/nvim-java/nvim-java-core.git
+[submodule "nvim/pack/vendor/start/nvim-java-test"]
+	path = nvim/pack/vendor/start/nvim-java-test
+	url = https://github.com/nvim-java/nvim-java-test.git
+[submodule "nvim/pack/vendor/start/nvim-java-dap"]
+	path = nvim/pack/vendor/start/nvim-java-dap
+	url = https://github.com/nvim-java/nvim-java-dap.git
+[submodule "nvim/pack/vendor/start/nui.nvim"]
+	path = nvim/pack/vendor/start/nui.nvim
+	url = https://github.com/MunifTanjim/nui.nvim.git
+[submodule "nvim/pack/vendor/start/ltex-ls.nvim"]
+	path = nvim/pack/vendor/start/ltex-ls.nvim
+	url = https://github.com/vigoux/ltex-ls.nvim

@@ -1,3 +1,5 @@
+require('java').setup()
+
 -- cmp
 local blink_cmp = require("blink.cmp")
 blink_cmp.setup({
@@ -29,21 +31,23 @@ mason.setup()
 local mlspconfig = require("mason-lspconfig")
 mlspconfig.setup({
   ensure_installed = {
-    "lua_ls",
-    "pyright",
-    "ts_ls",
+    "bashls",
     "clangd",
     "gopls",
     "jsonls",
+    "ltex_plus",
+    "lua_ls",
     "marksman",
+    "pyright",
     "rust_analyzer",
     "taplo",
-    "yamlls",
-    "bashls"
+    "ts_ls",
+    "yamlls"
   },
   automatic_installation = true,
 })
 
+-- vim.lsp.enable('jdtls')
 -- enable servers
 for _, server_name in ipairs(mlspconfig.get_installed_servers()) do
   vim.lsp.enable(server_name)
@@ -66,10 +70,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- lazyload latex
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "tex",
   callback = function()
-    vim.cmd.packadd("vimtex")
+    vim.opt.wrap = true
   end,
 })
+
+vim.g.vimtex_compiler_latexmk = {
+  executable = "latexmk",
+  options = {
+    "-pdf",
+    "-xelatex",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+  },
+}

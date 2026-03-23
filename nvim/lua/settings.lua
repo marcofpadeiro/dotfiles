@@ -33,7 +33,8 @@ vim.opt.laststatus = 0
 vim.opt.ruler = true
 vim.opt.winbar = "%f"
 
-local languagesDiffIndent = { "javascript", "typescript", "typescriptreact", "json", "yaml", "html", "css", "lua", "vue", "cucumber" }
+local languagesDiffIndent = { "javascript", "typescript", "typescriptreact", "json", "yaml", "html", "css", "lua", "vue",
+  "cucumber" }
 
 -- 2 spaces for web stuff
 vim.api.nvim_create_autocmd("FileType", {
@@ -43,6 +44,24 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 2
   end,
 })
+
+-- latex stuff
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function()
+    vim.opt.wrap = true
+  end,
+})
+
+vim.g.vimtex_compiler_latexmk = {
+  executable = "latexmk",
+  options = {
+    "-pdf",
+    "-xelatex",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+  },
+}
 
 -- no comment on newline
 vim.api.nvim_create_autocmd("BufEnter", {
