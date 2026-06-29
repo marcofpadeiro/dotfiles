@@ -1,12 +1,18 @@
-local ok, harpoon = pcall(require, 'harpoon')
-if not ok then return end
-
-harpoon:setup()
-
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-vim.keymap.set("n", "<leader>n", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<leader>e", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<leader>i", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<leader>o", function() harpoon:list():select(4) end)
+return {
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>a", function() require("harpoon"):list():add() end, desc = "Harpoon add" },
+      { "<leader>m", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon menu" },
+      { "<leader>n", function() require("harpoon"):list():select(1) end, desc = "Harpoon 1" },
+      { "<leader>e", function() require("harpoon"):list():select(2) end, desc = "Harpoon 2" },
+      { "<leader>i", function() require("harpoon"):list():select(3) end, desc = "Harpoon 3" },
+      { "<leader>o", function() require("harpoon"):list():select(4) end, desc = "Harpoon 4" },
+    },
+    config = function()
+      require("harpoon"):setup()
+    end,
+  },
+}

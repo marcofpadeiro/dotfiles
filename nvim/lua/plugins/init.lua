@@ -1,8 +1,21 @@
-local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+return {
+  -- Surround
+  { "kylechui/nvim-surround", event = "VeryLazy", config = true },
 
-for _, file in ipairs(vim.fn.readdir(plugin_dir, [[v:val =~ '\.lua$']])) do
-  local mod = file:gsub("%.lua$", "")
-  if mod ~= "init" then
-    require("plugins." .. mod)
-  end
-end
+  -- Git signs
+  { "lewis6991/gitsigns.nvim", event = "VeryLazy", config = true },
+
+  -- Colorizer (highlight hex colors)
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
+    opts = {
+      user_default_options = {
+        mode = "virtualtext",
+      },
+    },
+  },
+
+  -- Colorscheme
+  { "rebelot/kanagawa.nvim", priority = 1000 },
+}

@@ -27,7 +27,3 @@ vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], { silent = true })
 vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], { silent = true })
 vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { silent = true })
 
--- Camel Case motions
-vim.keymap.set({'n', 'o', 'x'}, 'w', '<Plug>CamelCaseMotion_w', {})
-vim.keymap.set({'n', 'o', 'x'}, 'b', '<Plug>CamelCaseMotion_b', {})
-vim.keymap.set({'n', 'o', 'x'}, 'e', '<Plug>CamelCaseMotion_e', {})

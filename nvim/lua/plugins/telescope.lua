@@ -1,40 +1,46 @@
-local ok_t, telescope = pcall(require, 'telescope')
-if not ok_t then return end
-local ok_b, builtin = pcall(require, 'telescope.builtin')
-if not ok_b then return end
-local ok, neoclip = pcall(require, 'neoclip')
-if not ok then return end
-
-vim.keymap.set('n', '<leader>tt', builtin.find_files, { silent = true })
-vim.keymap.set('n', '<leader>tg', builtin.live_grep, { silent = true })
-vim.keymap.set('n', '<leader><leader>', builtin.buffers, { silent = true })
-vim.keymap.set('n', '<leader>th', builtin.help_tags, { silent = true })
-vim.keymap.set('n', '<leader>ty', '<cmd>Telescope neoclip<CR>', { silent = true })
-
-local ok_a, actions = pcall(require, 'telescope.actions')
-if not ok_a then actions = {} end
-
-telescope.setup({
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-      },
+return {
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    keys = {
+      { "<leader>tt", "<cmd>Telescope find_files<CR>", desc = "Find files" },
+      { "<leader>tg", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
+      { "<leader><leader>", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
+      { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
+      { "<leader>ty", "<cmd>Telescope neoclip<CR>", desc = "Neoclip" },
     },
-    file_ignore_patterns = { "node_modules/.*", "pack/.*", "%.git/.*" }
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = 'smart_case',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "AckslD/nvim-neoclip.lua",
     },
+    config = function()
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+
+      telescope.setup({
+        defaults = {
+          mappings = {
+            i = {
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
+          },
+          file_ignore_patterns = { "node_modules/.*", "pack/.*", "%.git/.*" },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          },
+        },
+      })
+
+      require("neoclip").setup()
+      pcall(telescope.load_extension, "fzf")
+      pcall(telescope.load_extension, "neoclip")
+    end,
   },
-})
-
-neoclip.setup()
-
-pcall(telescope.load_extension, 'fzf')
-pcall(telescope.load_extension, 'neoclip')
+}
